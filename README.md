@@ -52,6 +52,3 @@ You can configure your workflows inside your n8n instance.
 Code-a-Cuisine aims to make cooking smarter, more sustainable, and more creative by turning everyday ingredients into delicious meals.
 
 ---
-
-## 👨‍💻 Author
-Zeljko Alakovic
