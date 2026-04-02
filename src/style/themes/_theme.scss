@@ -2,4 +2,7 @@
 
 .theme {
   background-color: v.$bg-green;
+  &--white {
+    background-color: v.$bg-white;
+  }
 }
