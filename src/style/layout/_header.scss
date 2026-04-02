@@ -1,0 +1,13 @@
+header {
+  position: absolute;
+  width: 100%;
+  top:0;
+}
+
+.logo {
+  padding:20px 15px;
+  cursor: pointer;
+  &:hover {
+    scale: 1.05;
+  }
+}

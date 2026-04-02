@@ -1,0 +1,5 @@
+@use '../abstracts/variables' as v;
+
+.theme {
+  background-color: v.$bg-green;
+}

@@ -1,0 +1,31 @@
+@use '../abstracts/variables' as v;
+
+.btn {
+  align-self: flex-start;
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: v.$text-green;
+  background-color: v.$btn-primary-creme;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    background-color: v.$btn-primary-creme-hover;
+    transform: scale(1.05);
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: v.$text-white;
+    margin-top: 0;
+    gap: 10px;
+    &:hover {
+      background-color: v.$btn-tertialy;
+    }
+  }
+}
