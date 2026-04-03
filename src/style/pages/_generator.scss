@@ -1,0 +1,159 @@
+@use '../abstracts/variables' as v;
+
+.generator {
+  min-height: 100vh;
+  padding: 100px 15px 50px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: 50px;
+    font-weight: 600;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: v.$text-green;
+    padding-block: 20px;
+  }
+  &__description {
+    font-size: 18px;
+    font-weight: 400;
+    color: v.$text-green-dark;
+  }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding-top: 25px;
+    align-items: flex-start;
+  }
+
+  &__content-left {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    background-color: v.$bg-green-card;
+    color: v.$text-green-dark;
+    padding: 25px;
+    border-radius: 20px;
+  }
+  &__content-right {
+    flex: 0 0 400px;
+    display: flex;
+    background-color: v.$bg-green-card;
+    color: v.$text-green-dark;
+    padding: 25px;
+    border-radius: 20px;
+  }
+
+  &__ingredient-input,
+  &__quantity-input {
+    display: flex;
+    flex-direction: column;
+    & > label {
+      padding-bottom: 10px;
+      font-weight: 500;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  &__unit {
+    flex-shrink: 0;
+  }
+
+  &__add {
+    flex-shrink: 0;
+  }
+
+  &__input {
+    padding: 5px 10px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: v.$bg-input;
+    width: 300px;
+    &--quantity {
+      width: 50px;
+    }
+  }
+
+  &__suggestions {
+    padding-top: 3px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    min-height: 90px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  &__suggestion {
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: v.$btn-primary-creme;
+    }
+  }
+
+  &__unit-wrapper {
+    position: relative;
+  }
+
+  &__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 12px;
+    color: red;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    list-style: none;
+    font-size: 14px;
+    & > li {
+      padding: 0 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      &:hover {
+        background: v.$btn-primary-creme;
+      }
+    }
+  }
+
+  &__ingredient-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    & > span {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  &__ingredient-overview {
+    list-style-type: disc;
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 180px;
+    min-width: 400px;
+    padding-left: 10px;
+  }
+}

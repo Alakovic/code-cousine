@@ -13,7 +13,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  gap: 5px;
+
   &:hover {
     background-color: v.$btn-primary-creme-hover;
     transform: scale(1.05);
@@ -27,5 +28,40 @@
     &:hover {
       background-color: v.$btn-tertialy;
     }
+  }
+
+  &--type {
+    margin-top: 0;
+    padding: 5px 10px;
+    border-radius: 12px;
+    background-color: v.$bg-input;
+    font-size: 15px;
+    &:hover {
+      transform: none;
+      background-color: v.$bg-input;
+    }
+  }
+
+  &--add {
+    margin-top: 0;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 5px;
+     &:hover {
+      transform: none;
+      background-color: v.$bg-input;
+    }
+  }
+
+  &__text {
+    font-weight: 400;
+    color: v.$text-green-dark;
+  }
+
+  &__icon {
+    &.open {
+      transform: rotate(180deg);
+    }
+    
   }
 }

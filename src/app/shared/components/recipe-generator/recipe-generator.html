@@ -1,1 +1,113 @@
-<p>recipe-generator works!</p>
+<section class="theme theme--white">
+  <div class="container">
+    <div class="generator">
+      <h1 class="generator__title">Generate recipe</h1>
+      <p class="generator__description">
+        Got random stuff in your kitchen? Pop it in-we've got the perfect recipe waiting.
+      </p>
+      <div class="generator__content">
+        <div class="generator__content-left">
+          <div class="generator__ingredient-input">
+            <label for="ingredient">Ingredient</label>
+            <input
+              class="generator__input"
+              type="text"
+              id="ingredient"
+              name="ingredient"
+              [(ngModel)]="ingredient"
+            />
+            <div class="generator__suggestions"></div>
+          </div>
+          <div class="generator__quantity-input">
+            <label for="quantity">Serving size</label>
+            <div class="generator__row">
+                <div class="generator__unit-wrapper">
+              <input
+                class="generator__input generator__input--quantity"
+                type="number"
+                id="quantity"
+                name="quantity"
+                placeholder="100"
+                [(ngModel)]="quantity"
+                (blur)="quantityTouched = true"
+              />
+              @if (quantityTouched && (quantity === null || quantity < 1)) {
+                <span class="generator__error"> Value must be at least 1 </span>
+              }
+              </div>
+              <div class="generator__unit-wrapper">
+                <button
+                  class="generator__unit btn btn--type"
+                  [class.open]="open"
+                  (click)="open = !open"
+                  type="button"
+                >
+                  <p class="btn__text">{{ selectedUnit }}</p>
+                  <svg
+                    class="btn__icon"
+                    [class.open]="open"
+                    width="10"
+                    height="5"
+                    viewBox="0 0 10 5"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M5 5L10 0L0 0L5 5Z" fill="#10310B" />
+                  </svg>
+                </button>
+                @if (open) {
+                  <ul class="generator__dropdown">
+                    @for (unit of units; track unit) {
+                      <li (click)="selectUnit(unit)">
+                        {{ unit }}
+                      </li>
+                    }
+                  </ul>
+                }
+              </div>
+              <button
+                type="button"
+                class="generator__add btn btn--add"
+                (click)="addIngredient()"
+                [disabled]="!isValidIngredient()"
+              >
+                <svg width="28" height="28" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                  <mask
+                    id="mask0_4352_3453"
+                    style="mask-type: alpha"
+                    maskUnits="userSpaceOnUse"
+                    x="6"
+                    y="6"
+                    width="24"
+                    height="24"
+                  >
+                    <rect x="6" y="6" width="24" height="24" />
+                  </mask>
+                  <g mask="url(#mask0_4352_3453)">
+                    <path
+                      d="M18 27C17.7167 27 17.4792 26.9042 17.2875 26.7125C17.0958 26.5208 17 26.2833 17 26V19H10C9.71667 19 9.47917 18.9042 9.2875 18.7125C9.09583 18.5208 9 18.2833 9 18C9 17.7167 9.09583 17.4792 9.2875 17.2875C9.47917 17.0958 9.71667 17 10 17H17V10C17 9.71667 17.0958 9.47917 17.2875 9.2875C17.4792 9.09583 17.7167 9 18 9C18.2833 9 18.5208 9.09583 18.7125 9.2875C18.9042 9.47917 19 9.71667 19 10V17H26C26.2833 17 26.5208 17.0958 26.7125 17.2875C26.9042 17.4792 27 17.7167 27 18C27 18.2833 26.9042 18.5208 26.7125 18.7125C26.5208 18.9042 26.2833 19 26 19H19V26C19 26.2833 18.9042 26.5208 18.7125 26.7125C18.5208 26.9042 18.2833 27 18 27Z"
+                      stroke="#10310B"
+                      stroke-width="1.5"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="generator__content-right">
+          <div class="generator__ingredient-list">
+            <span>List of your ingredients</span>
+            <ul class="generator__ingredient-overview">
+              @for (item of recipeService.ingredients; track $index) {
+                <li class="generator__ingredient-single">
+                  {{ item.quantity }} {{ item.unit }} {{ item.name }}
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
