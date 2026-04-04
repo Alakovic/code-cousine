@@ -15,7 +15,7 @@ export class Header {
   constructor(private router:Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.isWhiteTheme = event.urlAfterRedirects.includes('cookbook') || event.urlAfterRedirects.includes('recipe-generator');
+        this.isWhiteTheme = event.urlAfterRedirects.includes('cookbook') || event.urlAfterRedirects.includes('recipe-generator') || event.urlAfterRedirects.includes('preferences');
       }
     });
 

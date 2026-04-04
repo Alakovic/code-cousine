@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LandingPage } from './shared/components/landing-page/landing-page';
 import { Cookbook } from './shared/components/cookbook/cookbook';
 import { RecipeGenerator } from './shared/components/recipe-generator/recipe-generator';
+import { RecipePreferences } from './shared/components/recipe-preferences/recipe-preferences';
 
 export const routes: Routes = [
     {
@@ -15,5 +16,9 @@ export const routes: Routes = [
     {
         path: 'recipe-generator',
         component: RecipeGenerator
+    },
+    {
+        path: 'preferences',
+        component: RecipePreferences
     }
 ];

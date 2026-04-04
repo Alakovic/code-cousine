@@ -84,6 +84,10 @@
     &--quantity {
       width: 50px;
     }
+
+    &--editing {
+      width: 150px;
+    }
   }
 
   &__suggestions {
@@ -147,13 +151,48 @@
     }
   }
   &__ingredient-overview {
-    list-style-type: disc;
-    list-style-position: inside;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     min-height: 180px;
     min-width: 400px;
-    padding-left: 10px;
+    max-height: 180px;
+    overflow-y: auto; 
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: v.$bg-input;
+      border-radius: 4px;
+    }
   }
+
+  &__ingredient-single {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 10px;
+      color: v.$text-green-dark;
+    }
+    &:not(.editing):hover {
+      background-color: v.$bg-input;
+      border-radius: 10px;
+    }
+  }
+
+  &__actions {
+    margin-left: auto;
+    display: flex;
+    gap: 5px;
+  }
+}
+
+.editing {
+  gap: 5px;
 }

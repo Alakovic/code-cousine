@@ -42,14 +42,41 @@
     }
   }
 
+  &--green {
+    background-color: v.$btn-primary-green;
+    color: v.$text-white;
+    align-self: flex-end;
+    padding: 15px 20px;
+    margin-top: 80px;
+    font-size: 20px;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+      transform: none;
+      background-color: v.$btn-primary-green-hover;
+      transform: scale(1.05);
+    }
+  }
+
   &--add {
     margin-top: 0;
     padding: 0;
     background-color: transparent;
     border-radius: 5px;
-     &:hover {
+    &:hover {
       transform: none;
       background-color: v.$bg-input;
+    }
+  }
+
+  &--edit,
+  &--delete {
+    margin-top: 0;
+    padding: 2px;
+    background-color: transparent;
+    border-radius: 5px;
+    &:hover {
+      transform: none;
+      color: v.$btn-primary-green-hover;
     }
   }
 
@@ -62,6 +89,5 @@
     &.open {
       transform: rotate(180deg);
     }
-    
   }
 }
