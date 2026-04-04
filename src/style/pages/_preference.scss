@@ -1,0 +1,70 @@
+@use '../abstracts/variables' as v;
+
+.preference {
+  min-height: 100vh;
+  padding: 100px 15px 50px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    padding-block: 20px;
+    font-size: 40px;
+    font-weight: 400;
+    color: v.$text-green-dark;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  &__how-many {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 25px;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-block: 10px;
+  }
+
+  &__portions,
+  &__chef {
+    > span {
+      font-size: 20px;
+      color: v.$text-green-dark;
+    }
+  }
+
+  &__settings {
+    display: flex;
+    flex-direction: column;
+    background-color: v.$bg-green-card;
+    border-radius: 15px;
+    padding: 25px;
+  }
+
+  &__time,
+  &__cuisine,
+  &__diet {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__span {
+    font-size: 23px;
+    font-weight: 500;
+    color: v.$text-green-dark;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
