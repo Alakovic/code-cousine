@@ -15,7 +15,7 @@
   justify-content: center;
   gap: 5px;
 
-  &:hover {
+  &:not(:disabled):hover {
     background-color: v.$btn-primary-creme-hover;
     transform: scale(1.05);
   }
@@ -85,7 +85,6 @@
     border-radius: 5px;
     &:hover {
       transform: none;
-     
     }
   }
 
@@ -102,6 +101,20 @@
     &:disabled {
       background-color: transparent;
       cursor: not-allowed;
+    }
+  }
+
+  &--generate {
+    margin-top: 10px;
+    align-self: center;
+    background-color: v.$btn-primary-green;
+    color: v.$text-white;
+    &:not(:disabled):hover {
+      background-color: v.$btn-primary-green-hover;
+    }
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
 

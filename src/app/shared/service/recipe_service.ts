@@ -12,6 +12,9 @@ export class RecipeService {
 
   units : Unit[] = ['piece', 'ml', 'gram'];
 
-
+  generateRecipe(data:any){
+    console.log('Sending to AI:', data );
+    // Later this will be the logic to send the data to the AI and get the recipe back
+  }
 }
 

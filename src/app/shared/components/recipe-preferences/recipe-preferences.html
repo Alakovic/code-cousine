@@ -6,7 +6,7 @@
         <p class="btn__text btn__text--previous">Ingredients</p>
       </button>
       <h1 class="preference__title">Choose your preferences</h1>
-      <form class="preference__form">
+      <div class="preference__form">
         <div class="preference__how-many">
           <div class="preference__portions">
             <span>How many portions you need?</span>
@@ -26,7 +26,11 @@
                   />
                 </svg>
               </button>
-              <div class="preference__value">{{ portions }} Portion{{ portions > 1 ? 's' : '' }}</div>
+              <div class="preference__value">
+                <span class="preference__number">{{ portions }}</span> Portion{{
+                  portions > 1 ? 's' : ''
+                }}
+              </div>
               <button (click)="increase('portions')" type="button" class="btn btn--plus">
                 <svg
                   class="btn__icon"
@@ -62,8 +66,17 @@
                   />
                 </svg>
               </button>
-              <div class="preference__value">{{ chefs }} Person{{ chefs > 1 ? 's' : '' }}</div>
-              <button (click)="increase('chefs')" type="button" class="btn btn--plus" [disabled] = "chefs === 4">
+              <div class="preference__value">
+                <span class="preference__number">{{ chefs }} </span> Person{{
+                  chefs > 1 ? 's' : ''
+                }}
+              </div>
+              <button
+                (click)="increase('chefs')"
+                type="button"
+                class="btn btn--plus"
+                [disabled]="chefs === 4"
+              >
                 <svg
                   class="btn__icon"
                   width="28"
@@ -83,16 +96,111 @@
         </div>
         <div class="preference__settings">
           <div class="preference__time">
-            <span class="preference__span"> <img src="/assets/img/clock.svg" alt="clock">Cooking time</span>
+            <span class="preference__span">
+              <img src="/assets/img/clock.svg" alt="clock" />Cooking time</span
+            >
+            <div class="preference__options">
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="time" value="quick" [(ngModel)]="time" />
+                  <span class="preference__option"> Quick </span>
+                </label>
+                <small>ab to 20min</small>
+              </div>
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="time" value="medium" [(ngModel)]="time" />
+                  <span class="preference__option"> Medium </span>
+                </label>
+                <small>25-40min</small>
+              </div>
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="time" value="complex" [(ngModel)]="time" />
+                  <span class="preference__option"> Complex </span>
+                </label>
+                <small>over 45min</small>
+              </div>
+            </div>
           </div>
           <div class="preference__cuisine">
-            <span class="preference__span"> <img src="/assets/img/public.svg" alt="clock">Cuisine</span>
+            <span class="preference__span">
+              <img src="/assets/img/public.svg" alt="clock" />Cuisine</span
+            >
+            <div class="preference__options">
+                <div class="preference__option-wrapper">
+                  <label>
+                    <input type="radio" name="cuisine" value="german" [(ngModel)]="cuisine" />
+                    <span class="preference__option"> German </span>
+                  </label>
+                </div>
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="cuisine" value="italian" [(ngModel)]="cuisine" />
+                  <span class="preference__option"> Italian </span>
+                </label>
+              </div>
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="cuisine" value="indian" [(ngModel)]="cuisine" />
+                  <span class="preference__option"> Indian </span>
+                </label>
+              </div>
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="cuisine" value="japanese" [(ngModel)]="cuisine" />
+                  <span class="preference__option"> Japanese </span>
+                </label>
+              </div>
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="cuisine" value="gourmet" [(ngModel)]="cuisine" />
+                  <span class="preference__option"> Gourmet </span>
+                </label>
+              </div>
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="cuisine" value="fusion" [(ngModel)]="cuisine" />
+                  <span class="preference__option"> Fusion </span>
+                </label>
+              </div>
+
+            </div>
           </div>
           <div class="preference__diet">
-            <span class="preference__span"> <img src="/assets/img/fork_spoon.svg" alt="clock">Diet preferences</span>
+            <span class="preference__span">
+              <img src="/assets/img/fork_spoon.svg" alt="clock" />Diet preferences</span
+            >
+            <div class="preference__options">
+               <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="diet" value="vegeterian" [(ngModel)]="diet" />
+                  <span class="preference__option"> Vegeterian </span>
+                </label>
+              </div>
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="diet" value="vegan" [(ngModel)]="diet" />
+                  <span class="preference__option"> Vegan </span>
+                </label>
+              </div>
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="diet" value="keto" [(ngModel)]="diet" />
+                  <span class="preference__option"> Keto </span>
+                </label>
+              </div>
+              <div class="preference__option-wrapper">
+                <label>
+                  <input type="radio" name="diet" value="none" [(ngModel)]="diet" />
+                  <span class="preference__option"> No preferences </span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
+        <button class="btn btn--generate" [disabled]="!isValid()" (click)="generateRecipe()">Generate recipe</button>
+      </div>
     </div>
   </div>
 </section>

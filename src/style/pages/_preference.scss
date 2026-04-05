@@ -52,11 +52,24 @@
     padding: 25px;
   }
 
+  &__value {
+    display: flex;
+    align-items: center;
+  }
+
+  &__number {
+    background-color: v.$bg-green-card;
+    margin-right: 10px;
+    padding-inline: 5px;
+    color: v.$text-green-dark;
+  }
+
   &__time,
   &__cuisine,
   &__diet {
     display: flex;
     gap: 10px;
+    flex-direction: column;
   }
 
   &__span {
@@ -66,5 +79,45 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    padding-bottom: 10px;
+  }
+  &__options {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+  }
+
+  &__option-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 20px;
+    > label {
+      > input {
+        display: none;
+      }
+      >input:checked + .preference__option {
+        background-color: v.$btn-active;
+      }
+    }
+    >small{
+      color:v.$btn-text-green;
+      font-size: 14px;
+    }
+  }
+
+  &__option {
+    padding: 5px 15px;
+    border-radius: 12px;
+    background-color: v.$btn-primary-creme;
+    color: v.$btn-text-green;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    font-size: 18px;
+    &:hover {
+      background-color: v.$btn-primary-creme-hover;
+    }
   }
 }
