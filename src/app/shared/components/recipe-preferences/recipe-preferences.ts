@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { RouterLink,Router } from '@angular/router';
 import { CounterType, CuisineType, DietType, TimeType } from '../../types/recipe_types';
 import { FormsModule } from '@angular/forms';
 import { RecipeService } from '../../service/recipe_service';
@@ -11,23 +11,23 @@ import { RecipeService } from '../../service/recipe_service';
   styleUrls: ['./recipe-preferences.scss'],
 })
 export class RecipePreferences {
-
   portions: number = 1;
   chefs: number = 1;
   time: TimeType = null;
   cuisine: CuisineType = null;
   diet: DietType = null;
   recipeService = inject(RecipeService);
+  router =  inject(Router);
 
-  increase(type:CounterType) {
+  increase(type: CounterType) {
     if (type === 'portions') {
       this.portions++;
-    } else if (type === 'chefs'  && this.chefs < 4) {
+    } else if (type === 'chefs' && this.chefs < 4) {
       this.chefs++;
     }
   }
 
-  decrease(type:CounterType) {
+  decrease(type: CounterType) {
     if (type === 'portions' && this.portions > 1) {
       this.portions--;
     } else if (type === 'chefs' && this.chefs > 1) {
@@ -36,20 +36,36 @@ export class RecipePreferences {
   }
 
   isValid(): boolean {
-    return this.time !== null && this.cuisine !== null && this.diet !== null && this.portions > 0 && this.chefs > 0;
+    return (
+      this.time !== null &&
+      this.cuisine !== null &&
+      this.diet !== null &&
+      this.portions > 0 &&
+      this.chefs > 0
+    );
   }
 
   generateRecipe() {
     if (this.isValid()) {
-     let recipe = {
-      ingredients: this.recipeService.ingredients,
-      portions: this.portions,
-      chefs: this.chefs,
-      time: this.time,
-      cuisine: this.cuisine,
-      diet: this.diet
-     }
-     this.recipeService.generateRecipe(recipe);
-     }
+      let recipe = {
+        ingredients: this.recipeService.ingredients,
+        portions: this.portions,
+        chefs: this.chefs,
+        time: this.time,
+        cuisine: this.cuisine,
+        diet: this.diet,
+      };
+      this.recipeService.generateRecipe(recipe).subscribe();
+      this.resetPreferences();
+      this.router.navigate(['/results']);
+    }
+  }
+
+  resetPreferences() {
+    this.portions = 1;
+    this.chefs = 1;
+    this.time = null;
+    this.cuisine = null;
+    this.diet = null;
   }
 }

@@ -3,6 +3,7 @@ import { LandingPage } from './shared/components/landing-page/landing-page';
 import { Cookbook } from './shared/components/cookbook/cookbook';
 import { RecipeGenerator } from './shared/components/recipe-generator/recipe-generator';
 import { RecipePreferences } from './shared/components/recipe-preferences/recipe-preferences';
+import { RecipeResults } from './shared/components/recipe-results/recipe-results';
 
 export const routes: Routes = [
     {
@@ -20,5 +21,9 @@ export const routes: Routes = [
     {
         path: 'preferences',
         component: RecipePreferences
+    },
+    {
+        path: 'results',
+        component: RecipeResults
     }
 ];
