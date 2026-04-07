@@ -1,7 +1,18 @@
-import { Unit } from "../types/recipe_types";
+import { CuisineType, DietType, TimeType, Unit } from '../types/recipe_types';
 
 export interface RecipeInterface {
-    ingredients: Ingredient[];
+  id: string;
+  ingredients: Ingredient[];
+  name: string;
+  cuisine: CuisineType;
+  diet: DietType;
+  time: TimeType;
+  portions: number;
+  chefs: number;
+  nutrition: Nutrition[];
+  steps: string[];
+  likes: number;
+  extraIngredients: Ingredient[];
 }
 
 export interface Ingredient {
@@ -10,4 +21,9 @@ export interface Ingredient {
   unit: Unit;
 }
 
-
+export interface Nutrition {
+  energy: number;
+  protein: number;
+  fat: number;
+  carbs: number;
+}

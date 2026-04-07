@@ -1,4 +1,5 @@
-import { Component,OnInit,signal } from '@angular/core';
+import { Component,OnInit,signal,inject } from '@angular/core';
+import { RecipeService } from '../../service/recipe_service';
 
 @Component({
   selector: 'app-recipe-results',
@@ -8,10 +9,10 @@ import { Component,OnInit,signal } from '@angular/core';
 })
 export class RecipeResults implements OnInit {
   isLoading = signal(true);
+  recipeService = inject(RecipeService);
 
-  ngOnInit() {
-    setTimeout(() => {
-      this.isLoading.set(false);
-    }, 5000);
+  async ngOnInit() {
+    await this.recipeService.getLastThreeRecipes();
+    this.isLoading.set(false);
   }
 }
