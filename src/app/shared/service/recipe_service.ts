@@ -14,6 +14,27 @@ export class RecipeService {
   );
 
   lastRecipeList = signal<RecipeInterface[]>([]);
+  recipeDetail = signal<RecipeInterface>({
+    id: '',
+    ingredients: [],
+    name: '',
+    cuisine: 'italian',
+    diet: 'vegetarian',
+    time: 0,
+    portions: 0,
+    chefs: 0,
+    nutrition: [
+      {
+        energy: 0,
+        protein: 0,
+        fat: 0,
+        carbs: 0,
+      }
+    ],
+    steps: [],
+    likes: 0,
+    extraIngredients: []
+  });
   
   ingredients: Ingredient[] = [];
   units: Unit[] = ['piece', 'ml', 'gram'];
@@ -29,7 +50,13 @@ export class RecipeService {
     if (response.data) {
       this.lastRecipeList.set(response.data as RecipeInterface[]);
     }
-  
+  }
+
+  async getRecipeById(id: number) {
+    let response = await this.supabase.from('recipes').select('*').eq('id', id).single();
+    if (response.data) {
+      this.recipeDetail.set(response.data as RecipeInterface);
+    }
   }
 
 

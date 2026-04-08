@@ -1,1 +1,28 @@
-<p>recipe-overview works!</p>
+<section class="theme theme--white">
+  <div class="container">
+    <div class="overview">
+      <button class="btn btn--previous" routerLink="/results" type="button">
+        <img class="btn__icon" src="/assets/img/arrow_left.svg" />
+        <p class="btn__text btn__text--previous">Recipe results</p>
+      </button>
+      <div class="overview__content">
+        <div class="overview__head">
+          <div class="overview__title">
+            <div class="overview__time">
+              <img src="/assets/img/clock.svg" alt="clock icon" />
+              <span>Cooking time: {{ detail().time }}mins</span>
+            </div>
+            <h3 class="overview__name">{{ detail().name }}</h3>
+            <div class="overview__chefs">
+              <span>Cooking person: {{ detail().chefs }}</span>
+              @for (img of chefsArray(); track $index) {
+                <img class="overview__chefs-icon" [src]="img" alt="chef icon" />
+              }
+            </div>
+          </div>
+          <div class="overview__infos"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
