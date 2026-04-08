@@ -6,7 +6,7 @@ export interface RecipeInterface {
   name: string;
   cuisine: CuisineType;
   diet: DietType;
-  time: TimeType;
+  time: number;
   portions: number;
   chefs: number;
   nutrition: Nutrition[];

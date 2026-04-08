@@ -13,7 +13,7 @@ export class RecipeService {
     'sb_publishable_F2iDzbZDnYfkrYy2UZ32_g_bCqeH339',
   );
 
-  recipeList = signal<RecipeInterface[]>([]);
+  lastRecipeList = signal<RecipeInterface[]>([]);
   
   ingredients: Ingredient[] = [];
   units: Unit[] = ['piece', 'ml', 'gram'];
@@ -27,7 +27,7 @@ export class RecipeService {
   async getLastThreeRecipes() {
     let response = await this.supabase.from('recipes').select('*').order('created_at', { ascending: false }).limit(3);
     if (response.data) {
-      this.recipeList.set(response.data as RecipeInterface[]);
+      this.lastRecipeList.set(response.data as RecipeInterface[]);
     }
   
   }

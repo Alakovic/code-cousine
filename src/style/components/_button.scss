@@ -118,6 +118,10 @@
     }
   }
 
+  &--view{
+    margin-top: auto;
+  }
+
   &__text {
     font-weight: 400;
     color: v.$text-green-dark;

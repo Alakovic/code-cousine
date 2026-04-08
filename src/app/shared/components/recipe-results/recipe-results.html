@@ -8,7 +8,31 @@
         <p class="results__loading-text">Generating ...</p>
       } @else {
         <div class="results__content">
-          <h1>Your recipe is finished</h1>
+          <div class="results__headline">
+            <div class="results__headline-text">
+              <h2>The recipe results</h2>
+              <span
+                >We took what you have and let our AI do the thinking.<br />
+                Here are 3 easy recipes you can make right now!</span
+              >
+              @if (recipeService.lastRecipeList().length) {
+                <div class="results__headline-subtext">
+                  <div class="results__cuisine">
+                    {{ recipeService.lastRecipeList()[0].cuisine | titlecase }}
+                  </div>
+                  <div class="results__time">
+                    {{ getTimeDifficulty(recipeService.lastRecipeList()[0].time) }}
+                  </div>
+                </div>
+              }
+            </div>
+            <img class="results__headline-image" src="/assets/img/robohand.svg" alt="RoboHand" />
+          </div>
+          <div class="results__recipes">
+            @for(r of recipeService.lastRecipeList(); track r.id; let i = $index) {
+            <app-recipe-card [recipe]="r" [index]="i"></app-recipe-card>
+            }
+          </div>
         </div>
       }
     </div>

@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card__number">
+    <img src="/assets/img/icon.svg" alt="icon" />
+    <span>Recipe {{ index + 1 }}</span>
+  </div>
+  <div class="card__title">
+    <h3>{{ recipe.name }}</h3>
+  </div>
+  <div class="card__time">
+    <img src="/assets/img/clock.svg" alt="clock icon" />
+    <span>Cooking time: {{ recipe.time }}mins</span>
+  </div>
+  <button class="btn btn--view" [routerLink]="['/recipe', recipe.id]">View</button>
+</div>

@@ -24,4 +24,60 @@
     font-weight: 600;
     color: v.$text-white;
   }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+  }
+
+  &__headline {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    padding-block: 25px;
+  }
+
+  &__headline-text {
+    align-self: flex-start;
+    > h2 {
+      font-size: 50px;
+      font-weight: 600;
+      color: v.$text-white;
+      padding-bottom: 15px;
+    }
+    > span {
+      font-size: 20px;
+      color: v.$text-white;
+      font-weight: 200;
+    }
+  }
+
+  &__headline-subtext {
+    display: flex;
+    align-self: flex-end;
+    gap: 15px;
+    padding-top: 50px;
+  }
+
+  &__cuisine,
+  &__time {
+    color: v.$text-green;
+    padding: 5px 15px;
+    background-color: v.$text-white;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  &__headline-image {
+    border-radius: 20px;
+  }
+
+  &__recipes{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+  }
 }

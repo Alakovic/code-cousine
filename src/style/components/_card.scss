@@ -1,0 +1,46 @@
+@use '../abstracts/variables' as v;
+
+.card {
+  background-color: v.$bg-recipe-card;
+  width: 300px;
+  min-height: 260px;
+  border-radius: 25px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  &:hover {
+    background-color: v.$bg-recipe-card-hover;
+  }
+  &__number {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 22px;
+    font-weight: 400;
+    color: v.$text-green-dark;
+    padding-bottom: 20px;
+  }
+  &__title {
+    font-size: 25px;
+    font-weight: 400;
+    color: v.$text-green-dark;
+    padding-bottom: 15px;
+    line-height: 0.9;
+  }
+
+  &__time {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    > img {
+      width: 20px;
+      height: 20px;
+    }
+    > span {
+      font-size: 16px;
+      font-weight: 400;
+      color: v.$text-green-dark;
+    }
+  }
+}
