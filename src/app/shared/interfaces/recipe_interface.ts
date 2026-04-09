@@ -9,8 +9,8 @@ export interface RecipeInterface {
   time: number;
   portions: number;
   chefs: number;
-  nutrition: Nutrition[];
-  steps: string[];
+  nutrition: Nutrition;
+  steps: Steps[];
   likes: number;
   extraIngredients: Ingredient[];
 }
@@ -26,4 +26,9 @@ export interface Nutrition {
   protein: number;
   fat: number;
   carbs: number;
+}
+
+export interface Steps{
+  name:string;
+  description:string;
 }

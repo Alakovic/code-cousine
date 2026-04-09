@@ -30,5 +30,9 @@ export const routes: Routes = [
     {
         path: 'recipe/:id',
         component: RecipeOverview
+    },
+    {
+        path: 'cookbook',
+        component: Cookbook
     }
 ];

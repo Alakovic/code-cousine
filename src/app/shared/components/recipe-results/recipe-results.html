@@ -21,7 +21,7 @@
                     {{ recipeService.lastRecipeList()[0].cuisine | titlecase }}
                   </div>
                   <div class="results__time">
-                    {{ getTimeDifficulty(recipeService.lastRecipeList()[0].time) }}
+                    {{ recipeService.getTimeDifficulty(recipeService.lastRecipeList()[0].time) }}
                   </div>
                 </div>
               }
@@ -29,10 +29,14 @@
             <img class="results__headline-image" src="/assets/img/robohand.svg" alt="RoboHand" />
           </div>
           <div class="results__recipes">
-            @for(r of recipeService.lastRecipeList(); track r.id; let i = $index) {
-            <app-recipe-card [recipe]="r" [index]="i"></app-recipe-card>
+            @for (r of recipeService.lastRecipeList(); track r.id; let i = $index) {
+              <app-recipe-card [recipe]="r" [index]="i"></app-recipe-card>
             }
           </div>
+          <button class="btn btn--newRecipeGen" routerLink="/recipe-generator" type="button">
+            <p class="btn__text btn__text--cookbook">Generate new recipe</p>
+            <img class="btn__icon" src="/assets/img/arrowWhite_right.svg" />
+          </button>
         </div>
       }
     </div>

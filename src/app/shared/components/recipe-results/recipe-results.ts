@@ -18,13 +18,4 @@ export class RecipeResults implements OnInit {
     this.isLoading.set(false);
   }
 
-  getTimeDifficulty(time: number): string {
-    if (time <= 24) {
-      return 'Quick';
-    } else if (time <= 44) {
-      return 'Medium';
-    } else {
-      return 'Complex';
-    }
-  }
 }

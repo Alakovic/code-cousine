@@ -16,7 +16,7 @@
   gap: 5px;
 
   &:not(:disabled):hover {
-    background-color: v.$btn-primary-creme-hover;
+    background-color: #55734e;
     transform: scale(1.05);
   }
 
@@ -42,12 +42,43 @@
     }
   }
 
+  &--like {
+    align-self: normal;
+    margin-top: 0;
+    padding: 1px;
+    border-radius: 12px;
+    background-color: transparent;
+    &:hover {
+      background-color: v.$btn-secondary !important;
+    }
+  }
+
   &--previous {
     margin-top: 0;
     padding: 5px 10px;
     background-color: transparent;
     &:hover {
       background-color: v.$bg-input;
+    }
+  }
+
+  &--newRecipe {
+    align-self: flex-end;
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: transparent;
+    &:hover {
+      background-color: v.$bg-input;
+    }
+  }
+
+  &--newRecipeGen {
+    align-self: flex-end;
+    margin-top: 0;
+    padding: 5px 10px;
+    background-color: transparent;
+    &:hover {
+      background-color:#55734e;
     }
   }
 
@@ -118,8 +149,21 @@
     }
   }
 
-  &--view{
+  &--view {
     margin-top: auto;
+  }
+
+  &--cookbook {
+    margin-top: 0;
+    padding: 10px 15px;
+    background-color: v.$btn-primary-green;
+
+    font-size: 25px;
+    color: v.$text-white;
+    &:hover {
+      transform: none;
+      background-color: v.$btn-primary-green-hover !important;
+    }
   }
 
   &__text {
@@ -130,11 +174,19 @@
       font-weight: 400;
       font-size: 16px;
     }
+    &--cookbook {
+      color: v.$text-white;
+    }
   }
 
   &__icon {
     &.open {
       transform: rotate(180deg);
+    }
+
+    &--like {
+      width: 50px;
+      height: 50px;
     }
   }
 }

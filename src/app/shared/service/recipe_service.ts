@@ -23,19 +23,20 @@ export class RecipeService {
     time: 0,
     portions: 0,
     chefs: 0,
-    nutrition: [
-      {
-        energy: 0,
-        protein: 0,
-        fat: 0,
-        carbs: 0,
-      }
-    ],
-    steps: [],
+    nutrition: {
+      energy: 0,
+      protein: 0,
+      fat: 0,
+      carbs: 0,
+    },
+    steps:[{
+      name:'',
+      description:''
+    }],
     likes: 0,
-    extraIngredients: []
+    extraIngredients: [],
   });
-  
+
   ingredients: Ingredient[] = [];
   units: Unit[] = ['piece', 'ml', 'gram'];
   http = inject(HttpClient);
@@ -45,8 +46,22 @@ export class RecipeService {
     return this.http.post('https://zeljko-alakovic.app.n8n.cloud/webhook/generate-recipe', data);
   }
 
+  getTimeDifficulty(time: number): string {
+    if (time <= 24) {
+      return 'Quick';
+    } else if (time <= 44) {
+      return 'Medium';
+    } else {
+      return 'Complex';
+    }
+  }
+
   async getLastThreeRecipes() {
-    let response = await this.supabase.from('recipes').select('*').order('created_at', { ascending: false }).limit(3);
+    let response = await this.supabase
+      .from('recipes')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(3);
     if (response.data) {
       this.lastRecipeList.set(response.data as RecipeInterface[]);
     }
@@ -58,6 +73,4 @@ export class RecipeService {
       this.recipeDetail.set(response.data as RecipeInterface);
     }
   }
-
-
 }

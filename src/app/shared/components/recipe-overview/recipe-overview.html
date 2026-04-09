@@ -6,7 +6,7 @@
         <p class="btn__text btn__text--previous">Recipe results</p>
       </button>
       <div class="overview__content">
-        <div class="overview__head">
+        <div class="overview__content-head">
           <div class="overview__title">
             <div class="overview__time">
               <img src="/assets/img/clock.svg" alt="clock icon" />
@@ -20,9 +20,125 @@
               }
             </div>
           </div>
-          <div class="overview__infos"></div>
+          <div class="overview__infos">
+            <div class="overview__infos-head">
+              <span
+                class="overview__infos-diet"
+                [style.visibility]="isDietVisible() ? 'visible' : 'hidden'"
+              >
+                {{ detail().diet | titlecase }}
+              </span>
+
+              <span class="overview__infos-time">
+                {{ recipeService.getTimeDifficulty(detail().time) }}</span
+              >
+              <div class="overview__infos-likes">
+                <img src="/assets/img/favorite.svg" alt="hearth icon" />
+                <span>{{ detail().likes }}</span>
+              </div>
+            </div>
+            <span class="overview__infos-middle">Nutritional information</span>
+            <div class="overview__infos-nutri">
+              <div class="overview__infos-column">
+                <span class="overview__infos-ch">Energie</span>
+                <span class="overview__infos-cr">{{ detail().nutrition.energy }} kcal</span>
+              </div>
+              <div class="overview__infos-column">
+                <span class="overview__infos-ch">Protein</span>
+                <span class="overview__infos-cr">{{ detail().nutrition.protein }} g</span>
+              </div>
+              <div class="overview__infos-column">
+                <span class="overview__infos-ch">Fat</span>
+                <span class="overview__infos-cr">{{ detail().nutrition.fat }} g</span>
+              </div>
+              <div class="overview__infos-column">
+                <span class="overview__infos-ch">Carbs</span>
+                <span class="overview__infos-cr">{{ detail().nutrition.carbs }} g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="overview__ingredients">
+          <img
+            class="overview__ingredients-hero"
+            src="/assets/img/hero/ingredients.svg"
+            alt="ingredients hero image"
+          />
+          <div class="overview__ingredients-list">
+            <div class="overview__ingredients-my">
+              <span class="overview__ingredients-title">Your ingredients</span>
+              <ul class="overview__ingredients-ul">
+                @for (ingredient of detail().ingredients; track $index) {
+                  <li class="overview__ingredients-li">
+                    {{ ingredient.quantity }}{{ ingredient.unit }} {{ ingredient.name | titlecase }}
+                  </li>
+                }
+              </ul>
+            </div>
+            @for (ingredient of detail().extraIngredients; track $index) {
+              <div
+                class="overview__ingredients-extra"
+                [style.visibility]="detail().extraIngredients.length ? 'visible' : 'hidden'"
+              >
+                <span class="overview__ingredients-title">Extra ingredients</span>
+                <ul class="overview__ingredients-ul">
+                  <li class="overview__ingredients-li">
+                    {{ ingredient.quantity }}{{ ingredient.unit }} {{ ingredient.name | titlecase }}
+                  </li>
+                </ul>
+              </div>
+            }
+          </div>
+        </div>
+        <div class="overview__directions">
+          <img
+            class="overview__directions-hero"
+            src="/assets/img/hero/directions.svg"
+            alt="directions hero image"
+          />
+          <div class="overview__directions-grid">
+            @for (step of detail().steps; track $index; let i = $index) {
+              <div class="overview__directions-step">
+                <div class="overview__directions-sn">
+                  <span class="overview__directions-number">{{ i + 1 }}.</span>
+                  <h4 class="overview__directions-name">{{ step.name }}</h4>
+                  <img
+                    class="overview__directions-chef"
+                    [src]="getChefForStep(i)"
+                    alt="chef icon"
+                  />
+                </div>
+                <p class="overview__directions-description">{{ step.description }}</p>
+              </div>
+            }
+          </div>
+        </div>
+        <div class="overview__content-footer">
+          <span class="overview__fspan1">Just finished this meal?</span>
+          <span class="overview__fspan2"
+            >Give it a heart, so that the others know this is delicious.</span
+          >
+          <button class="btn btn--like" (click)="toggleLike()" type="button">
+            <img
+              class="btn__icon btn__icon--like"
+              [src]="liked ? '/assets/img/hearth_onClick.svg' : '/assets/img/hearth.svg'"
+              alt="hearth icon"
+            />
+          </button>
         </div>
       </div>
+      <div class="overview__footer">
+        <span class="overview__footer-text"
+          >Find inspiration for your next culinary adventure!</span
+        >
+        <button class="btn btn--cookbook" type="button" routerLink="/cookbook">
+          <span class="btn__text btn__text--cookbook">Cookbook</span>
+        </button>
+      </div>
+      <button class="btn btn--newRecipe" routerLink="/recipe-generator" type="button">
+         <p class="btn__text btn__text--previous">Generate new recipe </p>
+        <img class="btn__icon" src="/assets/img/arrowGreen_right.svg" />
+      </button>
     </div>
   </div>
 </section>
