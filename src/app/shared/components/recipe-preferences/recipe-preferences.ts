@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink,Router } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { CounterType, CuisineType, DietType, TimeType } from '../../types/recipe_types';
 import { FormsModule } from '@angular/forms';
 import { RecipeService } from '../../service/recipe_service';
@@ -17,7 +17,7 @@ export class RecipePreferences {
   cuisine: CuisineType = null;
   diet: DietType = null;
   recipeService = inject(RecipeService);
-  router =  inject(Router);
+  router = inject(Router);
 
   increase(type: CounterType) {
     if (type === 'portions') {
@@ -56,6 +56,7 @@ export class RecipePreferences {
         diet: this.diet,
       };
       this.recipeService.generateRecipe(recipe).subscribe();
+      this.recipeService.resetResults.set(true);
       this.resetPreferences();
       this.router.navigate(['/results']);
     }
@@ -67,5 +68,6 @@ export class RecipePreferences {
     this.time = null;
     this.cuisine = null;
     this.diet = null;
+    this.recipeService.ingredients = [];
   }
 }

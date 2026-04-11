@@ -1,7 +1,7 @@
 <section class="theme">
   <div class="container">
     <div class="results">
-      @if (isLoading()) {
+      @if (recipeService.lastRecipeList().length < 3) {
         <div class="results__loading">
           <img src="/assets/img/spinner/Code_Cuisine_Loading_Spinner.gif" alt="loading" />
         </div>

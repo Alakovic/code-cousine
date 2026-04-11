@@ -1,7 +1,7 @@
 import { CuisineType, DietType, TimeType, Unit } from '../types/recipe_types';
 
 export interface RecipeInterface {
-  id: string;
+  id: number;
   ingredients: Ingredient[];
   name: string;
   cuisine: CuisineType;
