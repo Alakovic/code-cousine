@@ -30,19 +30,4 @@ export class RecipeModel implements RecipeInterface {
     this.extraIngredients = data.extraIngredients ?? [];
   }
 
-  getCleanAddJson() {
-    return {
-      ingredients: this.ingredients,
-      name: this.name,
-      cuisine: this.cuisine,
-      diet: this.diet,
-      time: this.time,
-      portions: this.portions,
-      chefs: this.chefs,
-      nutrition: this.nutrition,
-      steps: this.steps,
-      likes: this.likes,
-      extraIngredients: this.extraIngredients,
-    };
-  }
 }

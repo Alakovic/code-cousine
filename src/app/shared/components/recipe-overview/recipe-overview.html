@@ -75,16 +75,16 @@
                 }
               </ul>
             </div>
-            @for (ingredient of detail().extraIngredients; track $index) {
-              <div
-                class="overview__ingredients-extra"
-                [style.visibility]="detail().extraIngredients.length ? 'visible' : 'hidden'"
-              >
+            @if (detail().extraIngredients.length) {
+              <div class="overview__ingredients-extra">
                 <span class="overview__ingredients-title">Extra ingredients</span>
                 <ul class="overview__ingredients-ul">
-                  <li class="overview__ingredients-li">
-                    {{ ingredient.quantity }}{{ ingredient.unit }} {{ ingredient.name | titlecase }}
-                  </li>
+                  @for (ingredient of detail().extraIngredients; track $index) {
+                    <li class="overview__ingredients-li">
+                      {{ ingredient.quantity }}{{ ingredient.unit }}
+                      {{ ingredient.name | titlecase }}
+                    </li>
+                  }
                 </ul>
               </div>
             }
@@ -136,7 +136,7 @@
         </button>
       </div>
       <button class="btn btn--newRecipe" routerLink="/recipe-generator" type="button">
-         <p class="btn__text btn__text--previous">Generate new recipe </p>
+        <p class="btn__text btn__text--previous">Generate new recipe</p>
         <img class="btn__icon" src="/assets/img/arrowGreen_right.svg" />
       </button>
     </div>
