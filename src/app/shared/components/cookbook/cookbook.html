@@ -1,1 +1,32 @@
-<p>cookbook works!</p>
+<section class="theme theme--white">
+  <div class="container">
+    <div class="cookbook">
+      <button class="btn btn--previous" routerLink="" type="button">
+        <img class="btn__icon" src="/assets/img/arrow_left.svg" />
+        <p class="btn__text btn__text--previous">Back</p>
+      </button>
+      <div class="cookbook__content">
+        <div class="cookbook__content-head">
+          <div class="cookbook__headline">
+            <h3 class="cookbook__title">Cookbook</h3>
+            <span class="cookbook__subtitle"
+              >From quick bites to gourmet delights, explore them all in our ultimate cookbook and
+              get inspired for your next culinary adventure.</span
+            >
+          </div>
+          <div class="cookbook__mostLiked">
+            <div class="cookbook__mostLiked-head">
+              <span class="cookbook__mostLiked-title">Most liked recipes </span>
+              <img src="/assets/img/hearth.svg" alt="" />
+            </div>
+            <div class="cookbook__mostLiked-recipes">
+              @for (r of mostLiked(); track r.id) {
+                <app-recipe-mini-card [recipe]="r"></app-recipe-mini-card>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
