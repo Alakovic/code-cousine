@@ -19,13 +19,39 @@
               <span class="cookbook__mostLiked-title">Most liked recipes </span>
               <img src="/assets/img/hearth.svg" alt="" />
             </div>
-            <div class="cookbook__mostLiked-recipes">
+            <div
+              class="cookbook__mostLiked-recipes"
+              (mousedown)="startDrag($event)"
+              (mousemove)="onDrag($event)"
+              (mouseup)="stopDrag()"
+              (mouseleave)="stopDrag()"
+            >
               @for (r of mostLiked(); track r.id) {
-                <app-recipe-mini-card [recipe]="r"></app-recipe-mini-card>
+                <app-recipe-mini-card
+                  [recipe]="r"
+                  (click)="handleClick($event, r)"
+                ></app-recipe-mini-card>
               }
             </div>
           </div>
         </div>
+        <div class="cookbook__cuisines">
+          @for (cuisine of cuisines; track cuisine.name) {
+            <div class="cookbook__cuisine-card">
+              <div class="cookbook__cuisine-head">
+                <span class="cookbook__cuisine-title">{{ cuisine.label }}</span>
+                <span class="cookbook__cuisine-icon">{{ cuisine.labelIcon }}</span>
+              </div>
+              <div class="cookbook__cuisine-image-wrapper">
+                <img [src]="cuisine.image" [alt]="cuisine.label" class="cookbook__cuisine-image" />
+              </div>
+            </div>
+          }
+        </div>
+        <button class="btn btn--newRecipe" routerLink="/recipe-generator" type="button">
+          <p class="btn__text btn__text--previous">Generate new recipe</p>
+          <img class="btn__icon" src="/assets/img/arrowGreen_right.svg" />
+        </button>
       </div>
     </div>
   </div>

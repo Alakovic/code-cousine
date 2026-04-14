@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink, Router, ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../../service/recipe_service';
-import { TitleCasePipe } from '@angular/common';
+import { TitleCasePipe,Location } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-overview',
@@ -11,6 +11,7 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class RecipeOverview {
   private route = inject(ActivatedRoute);
+  location = inject(Location);
   recipeService = inject(RecipeService);
   detail = this.recipeService.recipeDetail;
   router = inject(Router);
@@ -51,4 +52,15 @@ export class RecipeOverview {
       this.detail().likes -= 1;
     }
   }
+
+  goBack() {
+    this.location.back();
+  }
+
+  backButtonLabel = computed(() => {
+   let prev = this.recipeService.previousUrl();
+   if(prev.includes('/cookbook')) return 'Back to Cookbook';
+   if(prev.includes('results')) return 'Recipe results';
+   return 'Back';
+  });
 }

@@ -1,3 +1,15 @@
 <div class="card card--mini">
-
+  <div class="card__head">
+    <div class="card__time">
+      <img src="/assets/img/clock.svg" alt="clock icon" />
+      <span>Cooking time: {{ recipe.time }}mins</span>
+    </div>
+    <div class="card__likes">
+      <img src="/assets/img/hearth.svg" alt="heart icon" />
+      <span>{{ recipe.likes }}</span>
+    </div>
+  </div>
+  <div class="card__title card__title--mini">
+    <h3>{{ recipe.name }}</h3>
+  </div>
 </div>

@@ -4,6 +4,8 @@ import { Ingredient, RecipeInterface } from '../interfaces/recipe_interface';
 import { HttpClient } from '@angular/common/http';
 import { createClient, RealtimeChannel } from '@supabase/supabase-js';
 import { RecipeModel } from '../models/recipemodel';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +47,9 @@ export class RecipeService {
   units: Unit[] = ['piece', 'ml', 'gram'];
   http = inject(HttpClient);
   resetResults = signal(false);
+  router = inject(Router);
+  previousUrl = signal<string>('');
+  currentUrl = signal<string>('');
 
   recipeInsertListenerChannel!: RealtimeChannel;
   lastThreeInsertListenerChannel!: RealtimeChannel;
@@ -53,6 +58,17 @@ export class RecipeService {
     this.getAllRecipes();
     this.lastThreeRecipesListener();
     this.recipeInsertListener();
+    this.navigationTracking();
+  }
+
+  navigationTracking() {
+    this.currentUrl.set(this.router.url);
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.previousUrl.set(this.currentUrl());
+        this.currentUrl.set(event.urlAfterRedirects);
+      });
   }
 
   lastThreeRecipesListener() {

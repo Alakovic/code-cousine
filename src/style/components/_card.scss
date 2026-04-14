@@ -8,7 +8,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  height: 100%; 
+  height: 100%;
   &:hover {
     background-color: v.$bg-recipe-card-hover;
   }
@@ -27,12 +27,48 @@
     color: v.$text-green-dark;
     padding-bottom: 15px;
     line-height: 0.9;
+    &--mini {
+      padding-top: 15px;
+      padding-bottom: 0px;
+    }
   }
 
   &__time {
     display: flex;
     align-items: center;
     gap: 5px;
+    > img {
+      width: 20px;
+      height: 20px;
+    }
+    > span {
+      font-size: 16px;
+      font-weight: 400;
+      color: v.$text-green-dark;
+    }
+  }
+
+  &--mini {
+    width: 400px;
+    min-height: 150px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__likes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #b0c0b0;
+    padding: 3px 15px;
+    border-radius: 25px;
+    font-weight: 400;
     > img {
       width: 20px;
       height: 20px;

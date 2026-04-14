@@ -1,9 +1,9 @@
 <section class="theme theme--white">
   <div class="container">
     <div class="overview">
-      <button class="btn btn--previous" routerLink="/results" type="button">
+      <button class="btn btn--previous" (click)="goBack()" type="button">
         <img class="btn__icon" src="/assets/img/arrow_left.svg" />
-        <p class="btn__text btn__text--previous">Recipe results</p>
+        <p class="btn__text btn__text--previous">{{ backButtonLabel() }}</p>
       </button>
       <div class="overview__content">
         <div class="overview__content-head">
