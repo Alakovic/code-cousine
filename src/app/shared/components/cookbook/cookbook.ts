@@ -2,18 +2,19 @@ import { Component, computed, inject } from '@angular/core';
 import { RecipeService } from '../../service/recipe_service';
 import { RecipeMiniCard } from '../recipe-mini-card/recipe-mini-card';
 import { RecipeInterface } from '../../interfaces/recipe_interface';
-import { Router } from '@angular/router';
-import { CuisineType } from '../../types/recipe_types';
+import { Router ,RouterLink} from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cookbook',
-  imports: [RecipeMiniCard],
+  imports: [RecipeMiniCard, RouterLink],
   templateUrl: './cookbook.html',
   styleUrls: ['./cookbook.scss'],
 })
 export class Cookbook {
   recipeService = inject(RecipeService);
   router = inject(Router);
+  location = inject(Location);
   isDown: boolean = false;
   isDragging: boolean = false;
   startX: number = 0;
@@ -40,6 +41,10 @@ export class Cookbook {
       .sort((a, b) => b.likes - a.likes)
       .slice(0, 6);
   });
+
+  goBack() {
+    this.location.back();
+  }
 
   /**
    * Initializes the drag operation.
