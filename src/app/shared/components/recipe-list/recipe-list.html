@@ -1,0 +1,30 @@
+<section class="theme theme--white">
+  <div class="container">
+    <div class="recipe-list">
+      <div class="recipe-list__header">
+        <button class="btn btn--previous" routerLink="/cookbook" type="button">
+          <img class="btn__icon" src="/assets/img/arrow_left.svg" />
+          <p class="btn__text btn__text--previous">Cookbook</p>
+        </button>
+        <button class="btn btn--generate" routerLink="/recipe-generator" type="button">
+          Generate a recipe
+        </button>
+      </div>
+      <div class="recipe-list__content">
+        <img [src]="heroMap[cuisine!]" alt="hero image" class="recipe-list__hero" />
+        <div class="recipe-list__recipes">
+          @for (recipe of paginatedRecipes(); track recipe.id; let i = $index) {
+            <app-recipe-single [recipe]="recipe" [index]="i + 1"></app-recipe-single>
+          }
+        </div>
+      </div>
+      <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
+
+        <span>Page {{ currentPage }}</span>
+
+        <button (click)="nextPage()" [disabled]="currentPage >= totalPages()">Next</button>
+      </div>
+    </div>
+  </div>
+</section>

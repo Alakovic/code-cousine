@@ -1,0 +1,24 @@
+<div class="card card--single-recipe" (click)="goToRecipeDetail()">
+  <div class="card__left">
+    <div class="card__time card__time--single-recipe">
+      <img src="/assets/img/clock.svg" alt="clock icon" />
+      <span>Cooking time: {{ recipe.time }}mins</span>
+    </div>
+    <div class="card__nameNumber">
+      <span class="card__number card__number--single-recipe">{{ index }}.</span>
+      <span class="card__title card__title--single-recipe">{{ recipe.name }}</span>
+    </div>
+  </div>
+  <div class="card__right">
+    <div class="card__infos">
+      <span class="card__diet" [style.visibility]="isDietVisible() ? 'visible' : 'hidden'">{{
+        recipe.diet | titlecase
+      }}</span>
+      <span class="card__difficulty">{{ recipeService.getTimeDifficulty(recipe.time) }}</span>
+      <div class="card__likes">
+        <img src="/assets/img/favorite.svg" alt="hearth icon" />
+        <span>{{ recipe.likes }}</span>
+      </div>
+    </div>
+  </div>
+</div>

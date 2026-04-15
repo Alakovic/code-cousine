@@ -46,6 +46,10 @@ export class Cookbook {
     this.location.back();
   }
 
+  goToCuisine(cuisine: string) {
+    this.router.navigate(['/recipes', cuisine]);
+  }
+
   /**
    * Initializes the drag operation.
    * - Sets the dragging state (isDown)

@@ -12,14 +12,55 @@
   &:hover {
     background-color: v.$bg-recipe-card-hover;
   }
+
+  &--single-recipe {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 15px;
+    background-color: transparent;
+    &:hover {
+      cursor: pointer;
+      background-color: v.$btn-primary-creme;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  &__right {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__nameNumber {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    color: v.$text-green-dark;
+  }
+
   &__number {
     display: flex;
     align-items: center;
     gap: 15px;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 400;
     color: v.$text-green-dark;
     padding-bottom: 20px;
+    &--single-recipe {
+      padding-bottom: 0px;
+      font-size: 18px;
+      padding: 5px 10px;
+      border-radius: 50%;
+      background-color: v.$btn-primary-creme-hover;
+    }
   }
   &__title {
     font-size: 25px;
@@ -29,6 +70,9 @@
     line-height: 0.9;
     &--mini {
       padding-top: 15px;
+      padding-bottom: 0px;
+    }
+    &--single-recipe {
       padding-bottom: 0px;
     }
   }
@@ -46,6 +90,10 @@
       font-weight: 400;
       color: v.$text-green-dark;
     }
+
+    &--single-recipe {
+      padding-left: 40px;
+    }
   }
 
   &--mini {
@@ -61,7 +109,7 @@
     justify-content: space-between;
   }
 
-  &__likes {
+  &__likes, &__diet, &__difficulty {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -78,5 +126,12 @@
       font-weight: 400;
       color: v.$text-green-dark;
     }
+  }
+
+  &__infos {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
   }
 }

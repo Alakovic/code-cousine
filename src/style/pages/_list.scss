@@ -1,0 +1,32 @@
+.recipe-list {
+  padding: 100px 15px 50px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    padding-inline: 50px;
+  }
+  &__hero {
+    width: 100%;
+    height:150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__recipes{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+  }
+}
