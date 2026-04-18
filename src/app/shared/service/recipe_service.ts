@@ -135,7 +135,7 @@ export class RecipeService {
   async getRecipeById(id: number) {
     let response = await this.supabase.from('recipes').select('*').eq('id', id).single();
     if (response.data) {
-      this.recipeDetail.set(response.data as RecipeInterface);
+      this.recipeDetail.set({ ...response.data } as RecipeInterface);
     }
   }
 
@@ -144,5 +144,10 @@ export class RecipeService {
     if (response.data) {
       this.recipeByCuisine.set(response.data as RecipeInterface[]);
     }
+  }
+
+  async updateLikes(id: number, likes: number) {
+    await this.supabase.from('recipes').update({ likes }).eq('id', id);
+    this.allRecipes.update((recipes) => recipes.map((r) => (r.id === id ? { ...r, likes } : r)));
   }
 }

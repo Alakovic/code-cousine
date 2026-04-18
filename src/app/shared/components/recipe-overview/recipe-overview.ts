@@ -1,7 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink, Router, ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../../service/recipe_service';
-import { TitleCasePipe,Location } from '@angular/common';
+import { TitleCasePipe, Location } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-overview',
@@ -44,23 +44,22 @@ export class RecipeOverview {
     return this.detail().diet !== 'none';
   }
 
-  toggleLike() {
-    this.liked = !this.liked;
-    if (this.liked) {
-      this.detail().likes += 1;
-    } else {
-      this.detail().likes -= 1;
-    }
-  }
+  async toggleLike() {
+  this.liked = !this.liked;
+  let recipe = this.detail();
+  let newLikes = this.liked? recipe.likes + 1 : recipe.likes - 1;
+  await this.recipeService.updateLikes(recipe.id, newLikes);
+  await this.recipeService.getRecipeById(recipe.id);
+}
 
   goBack() {
     this.location.back();
   }
 
   backButtonLabel = computed(() => {
-   let prev = this.recipeService.previousUrl();
-   if(prev.includes('/cookbook')) return 'Back to Cookbook';
-   if(prev.includes('results')) return 'Recipe results';
-   return 'Back';
+    let prev = this.recipeService.previousUrl();
+    if (prev.includes('/cookbook')) return 'Back to Cookbook';
+    if (prev.includes('results')) return 'Recipe results';
+    return 'Back';
   });
 }
