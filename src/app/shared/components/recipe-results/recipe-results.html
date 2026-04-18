@@ -1,7 +1,18 @@
 <section class="theme">
   <div class="container">
     <div class="results">
-      @if (recipeService.lastRecipeList().length < 3) {
+      @if (error()) {
+        <div class="results__error-popup">
+          <div class="results__error-popup-content">
+            <span class="results__error-popup-title">Ups! Not quite enough...</span>
+            <p  class="results__error-popup-errorMessage">{{ getErrorMessage() }}</p>
+            <button class="btn btn--newRecipe" (click)="goBack()" type="button">
+              <p class="btn__text btn__text--previous">Go back to ingredients</p>
+              <img class="btn__icon" src="/assets/img/arrowGreen_right.svg" />
+            </button>
+          </div>
+        </div>
+      } @else if (recipeService.lastRecipeList().length < 3) {
         <div class="results__loading">
           <img src="/assets/img/spinner/Code_Cuisine_Loading_Spinner.gif" alt="loading" />
         </div>

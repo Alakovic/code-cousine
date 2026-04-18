@@ -51,6 +51,7 @@ export class RecipeService {
   router = inject(Router);
   previousUrl = signal<string>('');
   currentUrl = signal<string>('');
+  error = signal<string | null>(null);
 
   recipeInsertListenerChannel!: RealtimeChannel;
   lastThreeInsertListenerChannel!: RealtimeChannel;

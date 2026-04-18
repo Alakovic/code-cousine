@@ -2,21 +2,44 @@ import { Component, OnInit, signal, inject } from '@angular/core';
 import { RecipeService } from '../../service/recipe_service';
 import { TitleCasePipe } from '@angular/common';
 import { RecipeCard } from '../recipe-card/recipe-card';
-import {  RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-results',
   imports: [TitleCasePipe, RecipeCard, RouterLink],
   templateUrl: './recipe-results.html',
-  styleUrls: ['./recipe-results.scss'] ,
+  styleUrls: ['./recipe-results.scss'],
 })
 export class RecipeResults implements OnInit {
   recipeService = inject(RecipeService);
+  location = inject(Location);
+  error = this.recipeService.error;
 
   async ngOnInit() {
     if (this.recipeService.resetResults()) {
       this.recipeService.lastRecipeList.set([]);
       this.recipeService.resetResults.set(false);
+    }
+  }
+
+  goBack() {
+    this.location.back(); 
+  }
+
+  getErrorMessage(): string {
+    let err = this.error();
+    switch (err) {
+      case 'NOT_ENOUGH_INGREDIENTS':
+        return "It looks like some ingredient quantities aren't sufficient for your selected servings. Please Add or adjust quantities and try again.";
+      case 'INVALID_UNIT':
+        return 'Invalid unit (e.g. milk should be ml)';
+      case 'INVALID_QUANTITY':
+        return 'Quantity must be greater than 0';
+      case 'INVALID_INPUT':
+        return 'Input is invalid';
+      default:
+        return 'Something went wrong';
     }
   }
 }

@@ -47,6 +47,7 @@ export class RecipePreferences {
 
   generateRecipe() {
     if (this.isValid()) {
+      this.recipeService.error.set(null);
       let recipe = {
         ingredients: this.recipeService.ingredients,
         portions: this.portions,
@@ -55,11 +56,26 @@ export class RecipePreferences {
         cuisine: this.cuisine,
         diet: this.diet,
       };
-      this.recipeService.generateRecipe(recipe).subscribe();
-      this.recipeService.resetResults.set(true);
-      this.resetPreferences();
       this.router.navigate(['/results']);
+      this.handleGenerate(recipe);
     }
+  }
+
+  handleGenerate(recipe: any) {
+    this.recipeService.generateRecipe(recipe).subscribe({
+      next: (res: any) => {
+        let data = Array.isArray(res) ? res[0] : res;
+        if (data.error) {
+          this.recipeService.error.set(data.error);
+          return;
+        }
+        this.recipeService.resetResults.set(true);
+        this.resetPreferences();
+      },
+      error: () => {
+        this.recipeService.error.set('SERVER_ERROR');
+      },
+    });
   }
 
   resetPreferences() {

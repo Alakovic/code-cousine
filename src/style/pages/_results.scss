@@ -75,9 +75,45 @@
     border-radius: 20px;
   }
 
-  &__recipes{
+  &__recipes {
     display: flex;
     flex-direction: row;
     gap: 25px;
+  }
+
+  &__error-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 999;
+  }
+
+  &__error-popup-content {
+    background: v.$bg-white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 500px;
+  }
+
+  &__error-popup-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: v.$text-green;
+  }
+
+  &__error-popup-errorMessage {
+    padding-top: 15px;
+    font-size: 18px;
+    font-weight: 400;
+    color: v.$text-green-dark;
   }
 }
