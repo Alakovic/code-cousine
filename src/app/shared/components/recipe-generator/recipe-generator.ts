@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-generator',
-  imports: [FormsModule,RouterLink],
+  imports: [FormsModule, RouterLink],
   templateUrl: './recipe-generator.html',
   styleUrl: './recipe-generator.scss',
 })
@@ -21,6 +21,11 @@ export class RecipeGenerator {
   quantityTouched: boolean = false;
   editingIndex: number | null = null;
   openUnitIndex: number | null = null;
+  ingredientFilter: string = '';
+
+  ngOnInit() {
+    this.recipeService.getIngredientsName();
+  }
 
   selectUnit(unit: Unit) {
     this.selectedUnit = unit;
@@ -72,4 +77,14 @@ export class RecipeGenerator {
     this.openUnitIndex = null;
   }
 
+  getSuggestions() {
+    return this.recipeService
+      .ingredientsName()
+      .filter((ing) => ing.name.toLowerCase().startsWith(this.ingredient.toLowerCase()))
+      .slice(0, 3);
+  }
+
+  selectIngredient(name: string) {
+    this.ingredient = name;
+  }
 }

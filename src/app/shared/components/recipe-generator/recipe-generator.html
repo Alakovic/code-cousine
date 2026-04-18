@@ -16,7 +16,15 @@
               name="ingredient"
               [(ngModel)]="ingredient"
             />
-            <div class="generator__suggestions"></div>
+            <div class="generator__suggestions">
+              @if (ingredient) {
+                @for (ing of getSuggestions(); track ing.name) {
+                  <div class="generator__suggestion" (click)="selectIngredient(ing.name)">
+                    {{ ing.name }}
+                  </div>
+                }
+              }
+            </div>
           </div>
           <div class="generator__quantity-input">
             <label for="quantity">Serving size</label>
@@ -103,7 +111,11 @@
                 <li class="generator__ingredient-single" [class.editing]="editingIndex === $index">
                   @if (editingIndex === $index) {
                     <!-- EDIT MODE -->
-                    <input [(ngModel)]="item.quantity" type="number" class="generator__input generator__input--quantity"  />
+                    <input
+                      [(ngModel)]="item.quantity"
+                      type="number"
+                      class="generator__input generator__input--quantity"
+                    />
                     <div class="generator__unit-wrapper">
                       <button
                         class="generator__unit btn btn--type"
@@ -135,7 +147,11 @@
                         </ul>
                       }
                     </div>
-                    <input [(ngModel)]="item.name" type="text" class="generator__input generator__input--editing"    />
+                    <input
+                      [(ngModel)]="item.name"
+                      type="text"
+                      class="generator__input generator__input--editing"
+                    />
 
                     <div class="generator__actions">
                       <button class="btn btn--edit" (click)="saveEdit()">

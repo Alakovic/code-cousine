@@ -43,6 +43,7 @@ export class RecipeService {
     extraIngredients: [],
   });
   recipeByCuisine = signal<RecipeInterface[]>([]);
+  ingredientsName = signal<Pick<Ingredient, 'name'>[]>([]);
 
   ingredients: Ingredient[] = [];
   units: Unit[] = ['piece', 'ml', 'gram'];
@@ -150,5 +151,16 @@ export class RecipeService {
   async updateLikes(id: number, likes: number) {
     await this.supabase.from('recipes').update({ likes }).eq('id', id);
     this.allRecipes.update((recipes) => recipes.map((r) => (r.id === id ? { ...r, likes } : r)));
+  }
+
+  async getIngredientsName() {
+    let response = await this.supabase.from('recipes').select('ingredients');
+    if (response.data) {
+      this.ingredientsName.set(
+        response.data.flatMap((recipe: any) =>
+          recipe.ingredients.map((ing: any) => ({ name: ing.name })),
+        ),
+      );
+    }
   }
 }
