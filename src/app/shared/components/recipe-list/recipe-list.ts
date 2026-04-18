@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { RecipeService } from '../../service/recipe_service';
 import { CuisineType } from '../../types/recipe_types';
@@ -15,7 +15,7 @@ export class RecipeList {
   private route = inject(ActivatedRoute);
   recipeService = inject(RecipeService);
   cuisine: CuisineType | null = null;
-  currentPage: number = 1;
+  currentPage = signal(1);
   itemsPerPage: number = 15;
 
   heroMap: Record<string, string> = {
@@ -34,28 +34,61 @@ export class RecipeList {
     this.recipeService.getRecipesByCuisine(cuisineParam);
   }
 
-  paginatedRecipes() {
-    const all = this.recipeService.recipeByCuisine();
-
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
-
+  paginatedRecipes = computed(() => {
+    let all = this.recipeService.recipeByCuisine();
+    let page = this.currentPage();
+    let start = (page - 1) * this.itemsPerPage;
+    let end = start + this.itemsPerPage;
     return all.slice(start, end);
+  });
+
+  totalPages = computed(() => {
+    return Math.ceil(this.recipeService.recipeByCuisine().length / this.itemsPerPage);
+  });
+
+  pages = computed(() => {
+    let total = this.totalPages();
+    let current = this.currentPage();
+    let pages: (number | string)[] = [];
+    pages.push(1);
+    if (current > 3) {
+      pages.push('...');
+    }
+    pages.push(...this.getMiddlePages(current, total));
+    if (current < total - 2) {
+      pages.push('...');
+    }
+    if (total > 1) {
+      pages.push(total);
+    }
+    return pages;
+  });
+
+  getMiddlePages(current: number, total: number): number[] {
+    let pages: number[] = [];
+    for (let i = current - 1; i <= current + 1; i++) {
+      if (i > 1 && i < total) {
+        pages.push(i);
+      }
+    }
+
+    return pages;
   }
 
-  totalPages() {
-    return Math.ceil(this.recipeService.recipeByCuisine().length / this.itemsPerPage);
+  goToPage(page: number | string) {
+    if (typeof page !== 'number') return;
+    this.currentPage.set(page);
   }
 
   nextPage() {
-    if (this.currentPage < this.totalPages()) {
-      this.currentPage++;
+    if (this.currentPage() < this.totalPages()) {
+      this.currentPage.update((p) => p + 1);
     }
   }
 
   prevPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
+    if (this.currentPage() > 1) {
+      this.currentPage.update((p) => p - 1);
     }
   }
 }

@@ -14,16 +14,43 @@
         <img [src]="heroMap[cuisine!]" alt="hero image" class="recipe-list__hero" />
         <div class="recipe-list__recipes">
           @for (recipe of paginatedRecipes(); track recipe.id; let i = $index) {
-            <app-recipe-single [recipe]="recipe" [index]="i + 1"></app-recipe-single>
+            <app-recipe-single [recipe]="recipe" [index]="(currentPage() - 1) * itemsPerPage + i + 1"></app-recipe-single>
           }
         </div>
       </div>
-      <div class="pagination">
-        <button (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
+      <div class="recipe-list__pagination">
+        <button
+          class="recipe-list__left"
+          type="button"
+          (click)="prevPage()"
+          [disabled]="currentPage() === 1"
+        >
+          <
+        </button>
 
-        <span>Page {{ currentPage }}</span>
+        @for (p of pages(); track $index) {
+          @if (p === '...') {
+            <span class="dots">...</span>
+          } @else {
+            <button
+              class="recipe-list__page"
+              type="button"
+              (click)="goToPage(p)"
+              [class.active]="p === currentPage()"
+            >
+              {{ p }}
+            </button>
+          }
+        }
 
-        <button (click)="nextPage()" [disabled]="currentPage >= totalPages()">Next</button>
+        <button
+          class="recipe-list__right"
+          type="button"
+          (click)="nextPage()"
+          [disabled]="currentPage() === totalPages()"
+        >
+          >
+        </button>
       </div>
     </div>
   </div>
