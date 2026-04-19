@@ -3,17 +3,17 @@
 .landing-page {
   min-height: 100vh;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   gap: 10px;
   padding-inline: 15px;
   &__left {
-    flex: 5;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-block: 100px;
   }
   &__right {
-    flex: 3;
     position: relative;
   }
   &__main {
@@ -64,20 +64,113 @@
 
   &__plate {
     position: absolute;
+    right: 0;
+    bottom: 0;
     height: 350px;
     width: 350px;
-    left: 20%;
+    aspect-ratio: 1 / 1;
+
     &--first {
-      top: 0;
+      transform: translateY(-130%);
       z-index: 1;
     }
+
     &--second {
-      top: 30%;
+      transform: translateY(-65%);
       z-index: 2;
     }
+
     &--third {
-      bottom: 0;
+      transform: translateY(0%);
       z-index: 3;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .landing-page {
+    overflow-x: hidden;
+    &__plate {
+      left: -130px;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .landing-page {
+    &__main {
+      padding-top: 30px;
+    }
+    &__title {
+      font-size: 50px;
+    }
+    &__description {
+      font-size: 28px;
+    }
+    &__cookbook {
+      flex-direction: column;
+      gap: 5px;
+    }
+    &__question {
+      max-width: 12ch;
+      text-wrap: balance;
+      align-self: flex-start;
+      margin-left: 20px;
+    }
+    &__plate {
+      height: 300px;
+      width: 300px;
+
+      &--first {
+        transform: translateY(-130%) rotate(80deg);
+      }
+
+      &--second {
+        transform: translateY(-65%);
+      }
+
+      &--third {
+        transform: translateY(0%);
+      }
+    }
+  }
+}
+@media (max-width: 570px) {
+  .landing-page {
+    &__title {
+      max-width: 10ch;
+      text-wrap: balance;
+      line-height: 0.9;
+      padding-top: 30px;
+      padding-bottom: 20px;
+    }
+    &__description {
+      max-width: 18ch;
+      text-wrap: balance;
+    }
+  }
+}
+
+@media (max-width: 390px) {
+  .landing-page {
+    padding: 0 5px;
+    &__plate {
+      left: -100px;
+    }
+  }
+}
+
+@media (max-width: 340px) {
+  .landing-page {
+    &__title {
+      font-size: 40px;
+    }
+    &__description {
+      font-size: 20px;
+    }
+    &__question {
+      font-size: 20px;
+      margin-left: 5px;
     }
   }
 }
