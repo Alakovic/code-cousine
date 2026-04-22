@@ -29,7 +29,6 @@
   }
 
   &__content-left {
-    flex: 1;
     display: flex;
     flex-direction: row;
     gap: 25px;
@@ -39,7 +38,6 @@
     border-radius: 20px;
   }
   &__content-right {
-    flex: 0 0 400px;
     display: flex;
     background-color: v.$bg-green-card;
     color: v.$text-green-dark;
@@ -156,7 +154,7 @@
     min-height: 180px;
     min-width: 400px;
     max-height: 180px;
-    overflow-y: auto; 
+    overflow-y: auto;
     &::-webkit-scrollbar {
       width: 4px;
     }
@@ -195,4 +193,74 @@
 
 .editing {
   gap: 5px;
+}
+
+@media (max-width: 1050px) {
+  .generator {
+    padding: 100px 15px 0px 15px;
+    &__title {
+      padding-block: 0;
+    }
+    &__content {
+      flex-direction: column;
+      gap: 10px;
+    }
+    &__content-left,
+    &__content-right {
+      width: 100%;
+    }
+    &__ingredient-list {
+      min-width: 100%;
+    }
+    &__ingredient-overview {
+      min-height: 100px;
+      max-height: 150px;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .generator {
+    &__content-left {
+      flex-direction: column;
+      gap: 10px;
+    }
+    &__input {
+      width: 100%;
+      &--quantity {
+        width: 50px;
+      }
+    }
+    &__suggestions {
+      min-height: 0;
+    }
+  }
+}
+
+@media (max-width: 470px) {
+  .generator {
+    &__content {
+     width: 100%;
+    }
+    &__title {
+      font-size: 40px;
+      align-self: flex-start;
+    }
+    &__description {
+      font-size: 16px;
+      align-self: flex-start;
+    }
+    &__ingredient-overview {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+}
+
+@media(max-width:360px){
+  .generator{
+   &__title{
+    line-height: 0.9;
+   }
+  }
 }
