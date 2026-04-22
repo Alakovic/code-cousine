@@ -85,6 +85,7 @@
     display: flex;
     gap: 10px;
     flex-direction: row;
+    flex-wrap: wrap;
   }
 
   &__option-wrapper {
@@ -97,12 +98,12 @@
       > input {
         display: none;
       }
-      >input:checked + .preference__option {
+      > input:checked + .preference__option {
         background-color: v.$btn-active;
       }
     }
-    >small{
-      color:v.$btn-text-green;
+    > small {
+      color: v.$btn-text-green;
       font-size: 14px;
     }
   }
@@ -118,6 +119,45 @@
     font-size: 18px;
     &:hover {
       background-color: v.$btn-primary-creme-hover;
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .preference {
+    &__title {
+      align-self: flex-start;
+    }
+    &__how-many {
+      padding-inline: 0;
+      flex-direction: column;
+      gap: 15px;
+    }
+    &__settings {
+      gap: 15px;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .preference {
+    &__title {
+      line-height: 0.9;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .preference {
+    &__title {
+      font-size: 30px;
+    }
+    &__portions,
+    &__chef {
+      > span {
+        font-size: 16px;
+        color: v.$text-green-dark;
+      }
     }
   }
 }
