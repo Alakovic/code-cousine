@@ -20,7 +20,6 @@
   }
   &__hero {
     width: 100%;
-    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,5 +58,14 @@
 
   &__page.active {
     background-color:#c4d0c4;
+  }
+}
+
+@media(max-width:770px){
+  .recipe-list {
+    padding: 100px 5px 50px 5px;
+    &__content {
+      padding-inline:0px;
+    }
   }
 }
