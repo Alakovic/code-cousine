@@ -69,3 +69,12 @@
     }
   }
 }
+
+@media(max-width:400px){
+  .recipe-list {
+    &__header {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}

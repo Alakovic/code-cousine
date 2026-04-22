@@ -229,6 +229,14 @@
   }
 }
 
+@media (max-width: 400px) {
+  .btn {
+    &--generate {
+      margin-top:0;
+    }
+  }
+}
+
 @media (max-width: 340px) {
   .btn {
     &--secondary {
