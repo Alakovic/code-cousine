@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, HostListener, inject } from '@angular/core';
 import { RouterLink, Router, ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../../service/recipe_service';
 import { TitleCasePipe, Location } from '@angular/common';
@@ -16,6 +16,9 @@ export class RecipeOverview {
   detail = this.recipeService.recipeDetail;
   router = inject(Router);
   liked: boolean = false;
+  showIngredients: boolean = false;
+  showSteps: boolean = false;
+  isDesktop = window.innerWidth > 755;
 
   chefImages = [
     '/assets/img/cook1.svg',
@@ -28,6 +31,15 @@ export class RecipeOverview {
     let recipeId = Number(this.route.snapshot.paramMap.get('id'));
     if (!recipeId) return;
     this.recipeService.getRecipeById(recipeId);
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.isDesktop = window.innerWidth > 755;
+    if (this.isDesktop) {
+      this.showIngredients = true;
+      this.showSteps = true;
+    }
   }
 
   chefsArray() {
@@ -45,12 +57,12 @@ export class RecipeOverview {
   }
 
   async toggleLike() {
-  this.liked = !this.liked;
-  let recipe = this.detail();
-  let newLikes = this.liked? recipe.likes + 1 : recipe.likes - 1;
-  await this.recipeService.updateLikes(recipe.id, newLikes);
-  await this.recipeService.getRecipeById(recipe.id);
-}
+    this.liked = !this.liked;
+    let recipe = this.detail();
+    let newLikes = this.liked ? recipe.likes + 1 : recipe.likes - 1;
+    await this.recipeService.updateLikes(recipe.id, newLikes);
+    await this.recipeService.getRecipeById(recipe.id);
+  }
 
   goBack() {
     this.location.back();

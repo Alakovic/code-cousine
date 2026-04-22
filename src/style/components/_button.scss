@@ -149,6 +149,17 @@
     }
   }
 
+  &--results {
+    margin-top: 15px;
+    padding: 5px 10px;
+    background-color: transparent;
+    align-self: center;
+    gap: 10px;
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+
   &--view {
     margin-top: auto;
   }
@@ -203,7 +214,7 @@
 @media (max-width: 1045px) {
   .btn {
     &--newRecipeGen {
-      align-self:center;
+      align-self: center;
     }
   }
 }
@@ -224,7 +235,15 @@
 @media (max-width: 850px) {
   .btn {
     &--newRecipe {
-      align-self:center;
+      align-self: center;
+    }
+  }
+}
+
+@media (min-width: 756px) {
+  .btn {
+    &--results {
+      display: none;
     }
   }
 }
@@ -232,7 +251,7 @@
 @media (max-width: 400px) {
   .btn {
     &--generate {
-      margin-top:0;
+      margin-top: 0;
     }
   }
 }

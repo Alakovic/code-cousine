@@ -151,6 +151,8 @@
     font-size: 20px;
     font-weight: 400;
     color: v.$text-green-dark;
+    align-self: flex-start;
+    gap: 5px;
   }
 
   &__directions-grid {
@@ -237,5 +239,76 @@
     font-weight: 400;
     color: v.$text-green-dark;
     font-size: 20px;
+  }
+
+  &__ingredients-my,
+  &__ingredients-extra {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 830px) {
+  .overview {
+    &__ingredients-title {
+      font-size: 20px;
+    }
+
+    &__ingredients-li {
+      font-size: 16px;
+    }
+
+    &__directions-name {
+      font-size: 20px;
+    }
+
+    &__directions-description {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 755px) {
+  .overview {
+    &__content-head {
+      flex-direction: column;
+      gap: 15px;
+    }
+    &__title {
+      gap: 5px;
+    }
+    &__chefs {
+      > span {
+        display: none;
+      }
+    }
+    &__infos {
+      gap: 10px;
+    }
+    &__ingredients-list {
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    &__ingredients-title {
+      display: flex;
+      align-self: flex-start;
+    }
+
+    &__ingredients-ul {
+      padding-top: 10px;
+      padding-left: 20px;
+    }
+
+    &__ingredients-my, &__ingredients-extra {
+     padding-left: 15px;
+    }
+
+    &__directions-grid {
+      grid-template-columns: 1fr;
+      gap: 0px;
+    }
   }
 }

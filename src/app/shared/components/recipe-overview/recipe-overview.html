@@ -64,6 +64,7 @@
             src="/assets/img/hero/ingredients.svg"
             alt="ingredients hero image"
           />
+          @if(showIngredients || isDesktop) {
           <div class="overview__ingredients-list">
             <div class="overview__ingredients-my">
               <span class="overview__ingredients-title">Your ingredients</span>
@@ -89,6 +90,11 @@
               </div>
             }
           </div>
+        }
+          <button class="btn btn--results" (click)="showIngredients = !showIngredients" >
+          <p class="btn__text">{{ showIngredients ? 'Hide ingredients' : 'Show ingredients' }}</p>
+          <img class="btn__icon btn__icon--results" [class.open]="showIngredients" src="/assets/img/arrow_up.svg" alt="">
+        </button>
         </div>
         <div class="overview__directions">
           <img
@@ -96,6 +102,7 @@
             src="/assets/img/hero/directions.svg"
             alt="directions hero image"
           />
+          @if(showSteps || isDesktop) {
           <div class="overview__directions-grid">
             @for (step of detail().steps; track $index; let i = $index) {
               <div class="overview__directions-step">
@@ -112,6 +119,11 @@
               </div>
             }
           </div>
+        }
+           <button class="btn btn--results" (click)="showSteps = !showSteps" >
+          <p class="btn__text">{{ showSteps ? 'Hide steps' : 'Show steps' }}</p>
+          <img class="btn__icon btn__icon--results" [class.open]="showSteps" src="/assets/img/arrow_up.svg" alt="">
+        </button>
         </div>
         <div class="overview__content-footer">
           <span class="overview__fspan1">Just finished this meal?</span>
