@@ -191,11 +191,19 @@
   }
 }
 
-@media(max-width:1050px){
-  .btn{
-    &--green{
+@media (max-width: 1050px) {
+  .btn {
+    &--green {
       align-self: center;
       margin-top: 30px;
+    }
+  }
+}
+
+@media (max-width: 1045px) {
+  .btn {
+    &--newRecipeGen {
+      align-self:center;
     }
   }
 }
@@ -207,16 +215,15 @@
     }
     &--secondary {
       &:hover {
-        background-color:transparent !important;
+        background-color: transparent !important;
       }
     }
   }
 }
 
-
-@media(max-width:340px){
-  .btn{
-    &--secondary{
+@media (max-width: 340px) {
+  .btn {
+    &--secondary {
       padding: 0;
     }
   }
