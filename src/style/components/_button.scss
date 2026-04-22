@@ -221,6 +221,14 @@
   }
 }
 
+@media (max-width: 850px) {
+  .btn {
+    &--newRecipe {
+      align-self:center;
+    }
+  }
+}
+
 @media (max-width: 340px) {
   .btn {
     &--secondary {
