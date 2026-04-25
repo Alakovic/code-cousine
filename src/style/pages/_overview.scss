@@ -16,7 +16,6 @@
     width: 100%;
     border: 3px solid #faf0e6;
   }
-
   &__content-head {
     display: flex;
     flex-direction: row;
@@ -25,13 +24,11 @@
     border-radius: 25px;
     padding: 25px;
   }
-
   &__title {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-
   &__time {
     display: flex;
     align-items: center;
@@ -46,31 +43,26 @@
       color: v.$text-green-dark;
     }
   }
-
   &__name {
     font-size: 35px;
     font-weight: 500;
     color: v.$text-green-dark;
   }
-
   &__chefs {
     display: flex;
     align-items: center;
     gap: 15px;
   }
-
   &__chefs-icon,
   &__directions-chef {
     width: 70px;
     height: 30px;
   }
-
   &__infos {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
-
   &__infos-head {
     display: flex;
     flex-direction: row;
@@ -94,19 +86,16 @@
     color: v.$text-green-dark;
     font-weight: 500;
   }
-
   &__infos-nutri {
     display: flex;
     flex-direction: row;
     gap: 20px;
   }
-
   &__infos-column {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
-
   &__infos-ch {
     font-weight: 600;
     color: v.$text-green-dark;
@@ -115,38 +104,29 @@
     font-weight: 400;
     color: v.$text-green-dark;
   }
-
   &__ingredients,
   &__directions {
     display: flex;
     flex-direction: column;
     padding-top: 25px;
   }
-
-  &__ingredients-hero {
-    width: 100%;
-  }
-
   &__ingredients-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 150px;
   }
-
   &__ingredients-title {
     color: v.$text-green;
     font-weight: 400;
     font-size: 25px;
   }
-
   &__ingredients-ul {
     display: flex;
     flex-direction: column;
     padding-left: 40px;
     padding-top: 20px;
   }
-
   &__ingredients-li {
     font-size: 20px;
     font-weight: 400;
@@ -154,13 +134,11 @@
     align-self: flex-start;
     gap: 5px;
   }
-
   &__directions-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
-
   &__directions-step {
     display: flex;
     flex-direction: column;
@@ -169,13 +147,11 @@
     padding: 15px;
     border-radius: 15px;
   }
-
   &__directions-sn {
     display: flex;
     align-items: center;
     gap: 15px;
   }
-
   &__directions-number {
     background-color: #faf0e6;
     font-weight: 400;
@@ -184,23 +160,19 @@
     border-radius: 20px;
     font-size: 20px;
   }
-
   &__directions-name {
     font-weight: 500;
     color: v.$text-green-dark;
     font-size: 25px;
   }
-
   &__directions-description {
     font-weight: 400;
     color: v.$text-green-dark;
     font-size: 20px;
   }
-
   &__directions-chef {
     margin-left: auto;
   }
-
   &__content-footer {
     display: flex;
     flex-direction: row;
@@ -210,18 +182,15 @@
     padding-top: 40px;
     margin-top: 25px;
   }
-
   &__fspan1 {
     font-weight: 600;
     font-size: 20px;
     color: v.$text-green-dark;
   }
-
   &__fspan2 {
     font-weight: 400;
     color: v.$text-green-dark;
   }
-
   &__footer {
     display: flex;
     flex-direction: row;
@@ -234,18 +203,22 @@
     width: 100%;
     gap: 25px;
   }
-
   &__footer-text {
     font-weight: 400;
     color: v.$text-green-dark;
     font-size: 20px;
   }
-
   &__ingredients-my,
   &__ingredients-extra {
     width: 100%;
     max-width: 300px;
     text-align: center;
+  }
+
+  &__like {
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 }
 
@@ -254,17 +227,19 @@
     &__ingredients-title {
       font-size: 20px;
     }
-
     &__ingredients-li {
       font-size: 16px;
     }
-
     &__directions-name {
       font-size: 20px;
     }
-
     &__directions-description {
       font-size: 16px;
+    }
+    &__content-footer {
+      flex-direction: column;
+      gap: 0;
+      align-items: flex-start;
     }
   }
 }
@@ -291,24 +266,141 @@
       gap: 20px;
       align-items: flex-start;
     }
-
     &__ingredients-title {
       display: flex;
       align-self: flex-start;
     }
-
     &__ingredients-ul {
       padding-top: 10px;
       padding-left: 20px;
     }
-
-    &__ingredients-my, &__ingredients-extra {
-     padding-left: 15px;
+    &__ingredients-my,
+    &__ingredients-extra {
+      padding-left: 15px;
     }
-
     &__directions-grid {
       grid-template-columns: 1fr;
       gap: 0px;
+    }
+    &__footer {
+      gap: 10px;
+    }
+  }
+}
+
+@media (max-width: 660px) {
+  .overview {
+    padding: 100px 5px 50px 5px;
+    &__content {
+      padding: 10px;
+    }
+    &__name {
+      font-size: 25px;
+    }
+    &__time {
+      > span {
+        font-size: 15px;
+      }
+    }
+    &__infos-head {
+      gap: 10px;
+    }
+    &__infos-diet,
+    &__infos-time,
+    &__infos-likes {
+      font-size: 15px;
+    }
+    &__infos-likes {
+      gap: 3px;
+      > img {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .overview {
+    &__content {
+      padding: 5px;
+    }
+    &__content-head {
+      padding: 15px;
+    }
+    &__name {
+      font-size: 20px;
+    }
+    &__time {
+      > span {
+        font-size: 14px;
+      }
+    }
+    &__ingredients-title {
+      font-size: 16px;
+    }
+    &__ingredients-li {
+      font-size: 14px;
+    }
+    &__directions-number {
+      font-size: 16px;
+    }
+    &__directions-name {
+      font-size: 16px;
+    }
+    &__directions-description {
+      font-size: 14px;
+    }
+    &__fspan1 {
+      font-size: 16px;
+    }
+    &__fspan2 {
+      font-size: 14px;
+    }
+    &__footer-text {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .overview {
+    &__footer {
+      padding: 25px 10px;
+      gap: 5px;
+    }
+    &__infos-diet,
+    &__infos-time,
+    &__infos-likes {
+      font-size: 14px;
+    }
+    &__infos-likes {
+      gap: 3px;
+      > img {
+        width: 15px;
+        height: 15px;
+      }
+    }
+    &__infos-middle {
+      font-size: 15px;
+    }
+    &__infos-ch {
+      font-size: 15px;
+    }
+    &__infos-cr {
+      font-size: 14px;
+  }
+}
+}
+
+@media (max-width: 350px) {
+  .overview {
+    &__footer {
+      flex-direction: column;
+      gap: 10px;
+    }
+    &__footer-text {
+      text-align: center;
     }
   }
 }

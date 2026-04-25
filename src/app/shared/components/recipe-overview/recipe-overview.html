@@ -92,8 +92,8 @@
           </div>
         }
           <button class="btn btn--results" (click)="showIngredients = !showIngredients" >
-          <p class="btn__text">{{ showIngredients ? 'Hide ingredients' : 'Show ingredients' }}</p>
-          <img class="btn__icon btn__icon--results" [class.open]="showIngredients" src="/assets/img/arrow_up.svg" alt="">
+          <p class="btn__text btn__text--results">{{ showIngredients ? 'Hide ingredients' : 'Show ingredients' }}</p>
+          <img class="btn__icon btn__icon--results" [class.open]="showIngredients" src="/assets/img/arrow_drop_down.svg" alt="">
         </button>
         </div>
         <div class="overview__directions">
@@ -121,12 +121,13 @@
           </div>
         }
            <button class="btn btn--results" (click)="showSteps = !showSteps" >
-          <p class="btn__text">{{ showSteps ? 'Hide steps' : 'Show steps' }}</p>
-          <img class="btn__icon btn__icon--results" [class.open]="showSteps" src="/assets/img/arrow_up.svg" alt="">
+          <p class="btn__text btn__text--results">{{ showSteps ? 'Hide steps' : 'Show steps' }}</p>
+          <img class="btn__icon btn__icon--results" [class.open]="showSteps" src="/assets/img/arrow_drop_down.svg" alt="">
         </button>
         </div>
         <div class="overview__content-footer">
           <span class="overview__fspan1">Just finished this meal?</span>
+          <div class="overview__like">
           <span class="overview__fspan2"
             >Give it a heart, so that the others know this is delicious.</span
           >
@@ -137,6 +138,7 @@
               alt="hearth icon"
             />
           </button>
+          </div>
         </div>
       </div>
       <div class="overview__footer">

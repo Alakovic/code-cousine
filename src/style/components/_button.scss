@@ -188,6 +188,10 @@
     &--cookbook {
       color: v.$text-white;
     }
+    &--results {
+      font-weight: 400;
+      font-size: 16px;
+    }
   }
 
   &__icon {
@@ -248,10 +252,34 @@
   }
 }
 
+@media (max-width: 600px) {
+  .btn {
+    &__icon {
+      &--like {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    &__text {
+      &--cookbook {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
 @media (max-width: 400px) {
   .btn {
     &--generate {
       margin-top: 0;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .btn {
+    &--cookbook {
+     align-self: center;
     }
   }
 }
