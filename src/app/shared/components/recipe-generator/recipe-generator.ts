@@ -78,9 +78,15 @@ export class RecipeGenerator {
   }
 
   getSuggestions() {
+    let seen = new Set<string>();
     return this.recipeService
       .ingredientsName()
-      .filter((ing) => ing.name.toLowerCase().startsWith(this.ingredient.toLowerCase()))
+      .filter((ing) => {
+        let name = ing.name.trim().toLowerCase();
+        if (seen.has(name)) return false;
+        seen.add(name);
+        return ing.name.toLowerCase().startsWith(this.ingredient.toLowerCase());
+      })
       .slice(0, 3);
   }
 

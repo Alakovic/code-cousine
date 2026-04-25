@@ -18,8 +18,8 @@
             />
             <div class="generator__suggestions">
               @if (ingredient) {
-                @for (ing of getSuggestions(); track ing.name) {
-                  <div class="generator__suggestion" (click)="selectIngredient(ing.name)">
+                @for (ing of getSuggestions(); track $index) {
+                  <div class="generator__suggestion" (mousedown)="selectIngredient(ing.name)">
                     {{ ing.name }}
                   </div>
                 }
