@@ -21,12 +21,12 @@ export class Cookbook {
   scrollLeft: number = 0;
 
   cuisines= [
-    {name:'italian', label: 'Italian cuisine', labelIcon:'🤌', image:'/assets/img/cuisine/italian.svg' },
-    {name:'german', label: 'German cuisine', labelIcon:'🥨', image:'/assets/img/cuisine/german.svg' },
-    {name:'japanese', label: 'Japanese cuisine', labelIcon:'🥢', image:'/assets/img/cuisine/japanese.svg' },
-    {name:'gourmet', label: 'Gourmet cuisine', labelIcon:'✨', image:'/assets/img/cuisine/gourmet.svg' },
-    {name:'indian', label: 'Indian cuisine', labelIcon:'🍛', image:'/assets/img/cuisine/indian.svg' },
-    {name:'fusion', label: 'Fusion cuisine', labelIcon:'🍢', image:'/assets/img/cuisine/fusion.svg' },
+    {name:'italian', label: 'Italian cuisine', labelIcon:'🤌', image:'assets/img/cuisine/italian.svg' },
+    {name:'german', label: 'German cuisine', labelIcon:'🥨', image:'assets/img/cuisine/german.svg' },
+    {name:'japanese', label: 'Japanese cuisine', labelIcon:'🥢', image:'assets/img/cuisine/japanese.svg' },
+    {name:'gourmet', label: 'Gourmet cuisine', labelIcon:'✨', image:'assets/img/cuisine/gourmet.svg' },
+    {name:'indian', label: 'Indian cuisine', labelIcon:'🍛', image:'assets/img/cuisine/indian.svg' },
+    {name:'fusion', label: 'Fusion cuisine', labelIcon:'🍢', image:'assets/img/cuisine/fusion.svg' },
   ]
 
   /**

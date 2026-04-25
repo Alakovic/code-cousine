@@ -21,10 +21,10 @@ export class RecipeOverview {
   isDesktop = window.innerWidth > 755;
 
   chefImages = [
-    '/assets/img/cook1.svg',
-    '/assets/img/cook2.svg',
-    '/assets/img/cook3.svg',
-    '/assets/img/cook4.svg',
+    'assets/img/cook1.svg',
+    'assets/img/cook2.svg',
+    'assets/img/cook3.svg',
+    'assets/img/cook4.svg',
   ];
 
   ngOnInit(): void {

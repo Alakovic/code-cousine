@@ -8,13 +8,13 @@
             <p  class="results__error-popup-errorMessage">{{ getErrorMessage() }}</p>
             <button class="btn btn--newRecipe" (click)="goBack()" type="button">
               <p class="btn__text btn__text--previous">Go back to ingredients</p>
-              <img class="btn__icon" src="/assets/img/arrowGreen_right.svg" />
+              <img class="btn__icon" src="assets/img/arrowGreen_right.svg" />
             </button>
           </div>
         </div>
       } @else if (recipeService.lastRecipeList().length < 3) {
         <div class="results__loading">
-          <img src="/assets/img/spinner/Code_Cuisine_Loading_Spinner.gif" alt="loading" />
+          <img src="assets/img/spinner/Code_Cuisine_Loading_Spinner.gif" alt="loading" />
         </div>
         <p class="results__loading-text">Generating ...</p>
       } @else {
@@ -37,7 +37,7 @@
                 </div>
               }
             </div>
-            <img class="results__headline-image" src="/assets/img/robohand.svg" alt="RoboHand" />
+            <img class="results__headline-image" src="assets/img/robohand.svg" alt="RoboHand" />
           </div>
           <div class="results__recipes">
             @for (r of recipeService.lastRecipeList(); track r.id; let i = $index) {
@@ -46,7 +46,7 @@
           </div>
           <button class="btn btn--newRecipeGen" routerLink="/recipe-generator" type="button">
             <p class="btn__text btn__text--cookbook">Generate new recipe</p>
-            <img class="btn__icon" src="/assets/img/arrowWhite_right.svg" />
+            <img class="btn__icon" src="assets/img/arrowWhite_right.svg" />
           </button>
         </div>
       }

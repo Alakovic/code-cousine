@@ -2,14 +2,14 @@
   <div class="container">
     <div class="overview">
       <button class="btn btn--previous" (click)="goBack()" type="button">
-        <img class="btn__icon" src="/assets/img/arrow_left.svg" />
+        <img class="btn__icon" src="assets/img/arrow_left.svg" />
         <p class="btn__text btn__text--previous">{{ backButtonLabel() }}</p>
       </button>
       <div class="overview__content">
         <div class="overview__content-head">
           <div class="overview__title">
             <div class="overview__time">
-              <img src="/assets/img/clock.svg" alt="clock icon" />
+              <img src="assets/img/clock.svg" alt="clock icon" />
               <span>Cooking time: {{ detail().time }}mins</span>
             </div>
             <h3 class="overview__name">{{ detail().name }}</h3>
@@ -33,7 +33,7 @@
                 {{ recipeService.getTimeDifficulty(detail().time) }}</span
               >
               <div class="overview__infos-likes">
-                <img src="/assets/img/favorite.svg" alt="hearth icon" />
+                <img src="assets/img/favorite.svg" alt="hearth icon" />
                 <span>{{ detail().likes }}</span>
               </div>
             </div>
@@ -61,7 +61,7 @@
         <div class="overview__ingredients">
           <img
             class="overview__ingredients-hero"
-            src="/assets/img/hero/ingredients.svg"
+            src="assets/img/hero/ingredients.svg"
             alt="ingredients hero image"
           />
           @if(showIngredients || isDesktop) {
@@ -93,13 +93,13 @@
         }
           <button class="btn btn--results" (click)="showIngredients = !showIngredients" >
           <p class="btn__text btn__text--results">{{ showIngredients ? 'Hide ingredients' : 'Show ingredients' }}</p>
-          <img class="btn__icon btn__icon--results" [class.open]="showIngredients" src="/assets/img/arrow_drop_down.svg" alt="">
+          <img class="btn__icon btn__icon--results" [class.open]="showIngredients" src="assets/img/arrow_drop_down.svg" alt="">
         </button>
         </div>
         <div class="overview__directions">
           <img
             class="overview__directions-hero"
-            src="/assets/img/hero/directions.svg"
+            src="assets/img/hero/directions.svg"
             alt="directions hero image"
           />
           @if(showSteps || isDesktop) {
@@ -122,7 +122,7 @@
         }
            <button class="btn btn--results" (click)="showSteps = !showSteps" >
           <p class="btn__text btn__text--results">{{ showSteps ? 'Hide steps' : 'Show steps' }}</p>
-          <img class="btn__icon btn__icon--results" [class.open]="showSteps" src="/assets/img/arrow_drop_down.svg" alt="">
+          <img class="btn__icon btn__icon--results" [class.open]="showSteps" src="assets/img/arrow_drop_down.svg" alt="">
         </button>
         </div>
         <div class="overview__content-footer">
@@ -134,7 +134,7 @@
           <button class="btn btn--like" (click)="toggleLike()" type="button">
             <img
               class="btn__icon btn__icon--like"
-              [src]="liked ? '/assets/img/hearth_onClick.svg' : '/assets/img/hearth.svg'"
+              [src]="liked ? 'assets/img/hearth_onClick.svg' : 'assets/img/hearth.svg'"
               alt="hearth icon"
             />
           </button>
@@ -151,7 +151,7 @@
       </div>
       <button class="btn btn--newRecipe" routerLink="/recipe-generator" type="button">
         <p class="btn__text btn__text--previous">Generate new recipe</p>
-        <img class="btn__icon" src="/assets/img/arrowGreen_right.svg" />
+        <img class="btn__icon" src="assets/img/arrowGreen_right.svg" />
       </button>
     </div>
   </div>

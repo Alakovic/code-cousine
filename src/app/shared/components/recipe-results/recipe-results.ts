@@ -11,17 +11,10 @@ import { Location } from '@angular/common';
   templateUrl: './recipe-results.html',
   styleUrls: ['./recipe-results.scss'],
 })
-export class RecipeResults implements OnInit {
+export class RecipeResults  {
   recipeService = inject(RecipeService);
   location = inject(Location);
   error = this.recipeService.error;
-
-  async ngOnInit() {
-    if (this.recipeService.resetResults()) {
-      this.recipeService.lastRecipeList.set([]);
-      this.recipeService.resetResults.set(false);
-    }
-  }
 
   goBack() {
     this.location.back(); 

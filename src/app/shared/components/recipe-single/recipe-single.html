@@ -1,7 +1,7 @@
 <div class="card card--single-recipe" (click)="goToRecipeDetail()">
   <div class="card__left">
     <div class="card__time card__time--single-recipe">
-      <img src="/assets/img/clock.svg" alt="clock icon" />
+      <img src="assets/img/clock.svg" alt="clock icon" />
       <span>Cooking time: {{ recipe.time }}mins</span>
     </div>
     <div class="card__nameNumber">
@@ -16,7 +16,7 @@
       }}</span>
       <span class="card__difficulty">{{ recipeService.getTimeDifficulty(recipe.time) }}</span>
       <div class="card__likes">
-        <img src="/assets/img/favorite.svg" alt="hearth icon" />
+        <img src="assets/img/favorite.svg" alt="hearth icon" />
         <span>{{ recipe.likes }}</span>
       </div>
     </div>

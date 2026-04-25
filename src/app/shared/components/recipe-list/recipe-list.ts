@@ -19,12 +19,12 @@ export class RecipeList {
   itemsPerPage: number = 15;
 
   heroMap: Record<string, string> = {
-    italian: '/assets/img/hero/italian.svg',
-    german: '/assets/img/hero/german.svg',
-    indian: '/assets/img/hero/indian.svg',
-    japanese: '/assets/img/hero/japanese.svg',
-    gourmet: '/assets/img/hero/gourmet.svg',
-    fusion: '/assets/img/hero/fusion.svg',
+    italian: 'assets/img/hero/italian.svg',
+    german: 'assets/img/hero/german.svg',
+    indian: 'assets/img/hero/indian.svg',
+    japanese: 'assets/img/hero/japanese.svg',
+    gourmet: 'assets/img/hero/gourmet.svg',
+    fusion: 'assets/img/hero/fusion.svg',
   };
 
   ngOnInit(): void {
