@@ -53,6 +53,7 @@ export class RecipeService {
   previousUrl = signal<string>('');
   currentUrl = signal<string>('');
   error = signal<string | null>(null);
+  rateLimitInfo = signal<number | null>(null);
 
   recipeInsertListenerChannel!: RealtimeChannel;
   lastThreeInsertListenerChannel!: RealtimeChannel;

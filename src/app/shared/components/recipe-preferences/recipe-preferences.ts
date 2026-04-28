@@ -48,6 +48,7 @@ export class RecipePreferences {
   generateRecipe() {
     if (this.isValid()) {
       this.recipeService.error.set(null);
+      this.recipeService.rateLimitInfo.set(null);
       let recipe = {
         ingredients: this.recipeService.ingredients,
         portions: this.portions,
@@ -67,6 +68,9 @@ export class RecipePreferences {
         let data = Array.isArray(res) ? res[0] : res;
         if (data.error) {
           this.recipeService.error.set(data.error);
+          if (data.error === 'RATE_LIMIT_EXCEEDED') {
+            this.recipeService.rateLimitInfo.set(Number(data.retryAfter));
+          }
           return;
         }
         this.recipeService.resetResults.set(true);

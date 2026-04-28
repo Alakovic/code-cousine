@@ -11,13 +11,13 @@ import { Location } from '@angular/common';
   templateUrl: './recipe-results.html',
   styleUrls: ['./recipe-results.scss'],
 })
-export class RecipeResults  {
+export class RecipeResults {
   recipeService = inject(RecipeService);
   location = inject(Location);
   error = this.recipeService.error;
 
   goBack() {
-    this.location.back(); 
+    this.location.back();
   }
 
   getErrorMessage(): string {
@@ -31,6 +31,13 @@ export class RecipeResults  {
         return 'Quantity must be greater than 0';
       case 'INVALID_INPUT':
         return 'Input is invalid';
+      case 'RATE_LIMIT_EXCEEDED':
+        let retry = this.recipeService.rateLimitInfo();
+        return retry !== null
+          ? `Too many requests. Try again in ${retry}s`
+          : 'Too many requests. Try again later.';
+      case 'SERVER_ERROR':
+        return 'Server error. Please try again.';
       default:
         return 'Something went wrong';
     }
