@@ -140,12 +140,14 @@
     gap: 20px;
   }
 
-  &__directions-title {
+  &__directions-title,
+  &__ingredients-title {
     position: relative;
     display: inline-block;
   }
 
-  &__directions-hero {
+  &__directions-hero,
+  &__ingredients-hero {
     display: block;
     width: 100%;
   }
@@ -155,10 +157,18 @@
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    color: white;
-    font-size: 30px;
-    font-weight: 600;
+    color: #1e5515;
+    font-size: 40px;
+    font-weight: 400;
+  }
+  &__ingredients-title span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #1e5515;
+    font-size: 35px;
+    font-weight: 400;
   }
   &__directions-step {
     display: flex;
@@ -245,8 +255,9 @@
 
 @media (max-width: 830px) {
   .overview {
-    &__ingredients-title {
-      font-size: 20px;
+    &__ingredients-title span,
+    &__directions-title span {
+      font-size: 30px;
     }
     &__ingredients-li {
       font-size: 16px;
@@ -338,6 +349,10 @@
         height: 15px;
       }
     }
+    &__ingredients-title span,
+    &__directions-title span {
+      font-size: 25px;
+    }
   }
 }
 
@@ -410,6 +425,10 @@
     }
     &__infos-cr {
       font-size: 14px;
+    }
+    &__ingredients-title span,
+    &__directions-title span {
+      font-size: 18px;
     }
   }
 }
