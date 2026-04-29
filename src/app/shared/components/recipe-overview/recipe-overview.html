@@ -64,23 +64,12 @@
             src="assets/img/hero/ingredients.svg"
             alt="ingredients hero image"
           />
-          @if(showIngredients || isDesktop) {
-          <div class="overview__ingredients-list">
-            <div class="overview__ingredients-my">
-              <span class="overview__ingredients-title">Your ingredients</span>
-              <ul class="overview__ingredients-ul">
-                @for (ingredient of detail().ingredients; track $index) {
-                  <li class="overview__ingredients-li">
-                    {{ ingredient.quantity }}{{ ingredient.unit }} {{ ingredient.name | titlecase }}
-                  </li>
-                }
-              </ul>
-            </div>
-            @if (detail().extraIngredients.length) {
-              <div class="overview__ingredients-extra">
-                <span class="overview__ingredients-title">Extra ingredients</span>
+          @if (showIngredients || isDesktop) {
+            <div class="overview__ingredients-list">
+              <div class="overview__ingredients-my">
+                <span class="overview__ingredients-title">Your ingredients</span>
                 <ul class="overview__ingredients-ul">
-                  @for (ingredient of detail().extraIngredients; track $index) {
+                  @for (ingredient of detail().ingredients; track $index) {
                     <li class="overview__ingredients-li">
                       {{ ingredient.quantity }}{{ ingredient.unit }}
                       {{ ingredient.name | titlecase }}
@@ -88,56 +77,85 @@
                   }
                 </ul>
               </div>
-            }
-          </div>
-        }
-          <button class="btn btn--results" (click)="showIngredients = !showIngredients" >
-          <p class="btn__text btn__text--results">{{ showIngredients ? 'Hide ingredients' : 'Show ingredients' }}</p>
-          <img class="btn__icon btn__icon--results" [class.open]="showIngredients" src="assets/img/arrow_drop_down.svg" alt="">
-        </button>
+              @if (detail().extraIngredients.length) {
+                <div class="overview__ingredients-extra">
+                  <span class="overview__ingredients-title">Extra ingredients</span>
+                  <ul class="overview__ingredients-ul">
+                    @for (ingredient of detail().extraIngredients; track $index) {
+                      <li class="overview__ingredients-li">
+                        {{ ingredient.quantity }}{{ ingredient.unit }}
+                        {{ ingredient.name | titlecase }}
+                      </li>
+                    }
+                  </ul>
+                </div>
+              }
+            </div>
+          }
+          <button class="btn btn--results" (click)="showIngredients = !showIngredients">
+            <p class="btn__text btn__text--results">
+              {{ showIngredients ? 'Hide ingredients' : 'Show ingredients' }}
+            </p>
+            <img
+              class="btn__icon btn__icon--results"
+              [class.open]="showIngredients"
+              src="assets/img/arrow_drop_down.svg"
+              alt=""
+            />
+          </button>
         </div>
         <div class="overview__directions">
-          <img
-            class="overview__directions-hero"
-            src="assets/img/hero/directions.svg"
-            alt="directions hero image"
-          />
-          @if(showSteps || isDesktop) {
-          <div class="overview__directions-grid">
-            @for (step of detail().steps; track $index; let i = $index) {
-              <div class="overview__directions-step">
-                <div class="overview__directions-sn">
-                  <span class="overview__directions-number">{{ i + 1 }}.</span>
-                  <h4 class="overview__directions-name">{{ step.name }}</h4>
-                  <img
-                    class="overview__directions-chef"
-                    [src]="getChefForStep(i)"
-                    alt="chef icon"
-                  />
-                </div>
-                <p class="overview__directions-description">{{ step.description }}</p>
-              </div>
-            }
+          <div class="overview__directions-title">
+            <span>Directions</span>
+            <img
+              class="overview__directions-hero"
+              src="assets/img/hero/directions.svg"
+              alt="directions hero image"
+            />
           </div>
-        }
-           <button class="btn btn--results" (click)="showSteps = !showSteps" >
-          <p class="btn__text btn__text--results">{{ showSteps ? 'Hide steps' : 'Show steps' }}</p>
-          <img class="btn__icon btn__icon--results" [class.open]="showSteps" src="assets/img/arrow_drop_down.svg" alt="">
-        </button>
+          @if (showSteps || isDesktop) {
+            <div class="overview__directions-grid">
+              @for (step of detail().steps; track $index; let i = $index) {
+                <div class="overview__directions-step">
+                  <div class="overview__directions-sn">
+                    <span class="overview__directions-number">{{ i + 1 }}.</span>
+                    <h4 class="overview__directions-name">{{ step.name }}</h4>
+                    <img
+                      class="overview__directions-chef"
+                      [src]="getChefForStep(i)"
+                      alt="chef icon"
+                    />
+                  </div>
+                  <p class="overview__directions-description">{{ step.description }}</p>
+                </div>
+              }
+            </div>
+          }
+          <button class="btn btn--results" (click)="showSteps = !showSteps">
+            <p class="btn__text btn__text--results">
+              {{ showSteps ? 'Hide steps' : 'Show steps' }}
+            </p>
+            <img
+              class="btn__icon btn__icon--results"
+              [class.open]="showSteps"
+              src="assets/img/arrow_drop_down.svg"
+              alt=""
+            />
+          </button>
         </div>
         <div class="overview__content-footer">
           <span class="overview__fspan1">Just finished this meal?</span>
           <div class="overview__like">
-          <span class="overview__fspan2"
-            >Give it a heart, so that the others know this is delicious.</span
-          >
-          <button class="btn btn--like" (click)="toggleLike()" type="button">
-            <img
-              class="btn__icon btn__icon--like"
-              [src]="liked ? 'assets/img/hearth_onClick.svg' : 'assets/img/hearth.svg'"
-              alt="hearth icon"
-            />
-          </button>
+            <span class="overview__fspan2"
+              >Give it a heart, so that the others know this is delicious.</span
+            >
+            <button class="btn btn--like" (click)="toggleLike()" type="button">
+              <img
+                class="btn__icon btn__icon--like"
+                [src]="liked ? 'assets/img/hearth_onClick.svg' : 'assets/img/hearth.svg'"
+                alt="hearth icon"
+              />
+            </button>
           </div>
         </div>
       </div>
