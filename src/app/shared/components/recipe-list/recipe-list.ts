@@ -27,6 +27,15 @@ export class RecipeList {
     fusion: 'assets/img/hero/fusion.svg',
   };
 
+  titleMap: Record<string, string> = {
+    italian: 'Italian cuisine',
+    german: 'German cuisine',
+    indian: 'Indian cuisine',
+    japanese: 'Japanese cuisine',
+    gourmet: 'Gourmet cuisine',
+    fusion: 'Fusion cuisine',
+  };
+
   ngOnInit(): void {
     let cuisineParam = this.route.snapshot.paramMap.get('cuisine') as CuisineType;
     if (!cuisineParam) return;

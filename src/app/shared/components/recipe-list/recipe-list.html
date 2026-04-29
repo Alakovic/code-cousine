@@ -11,10 +11,18 @@
         </button>
       </div>
       <div class="recipe-list__content">
-        <img [src]="heroMap[cuisine!]" alt="hero image" class="recipe-list__hero" />
+        <div class="recipe-list__hero-wrapper">
+          <img [src]="heroMap[cuisine!]" alt="hero image" class="recipe-list__hero" />
+          <h2 class="recipe-list__hero-title">
+            {{ titleMap[cuisine!] }}
+          </h2>
+        </div>
         <div class="recipe-list__recipes">
           @for (recipe of paginatedRecipes(); track recipe.id; let i = $index) {
-            <app-recipe-single [recipe]="recipe" [index]="(currentPage() - 1) * itemsPerPage + i + 1"></app-recipe-single>
+            <app-recipe-single
+              [recipe]="recipe"
+              [index]="(currentPage() - 1) * itemsPerPage + i + 1"
+            ></app-recipe-single>
           }
         </div>
       </div>
