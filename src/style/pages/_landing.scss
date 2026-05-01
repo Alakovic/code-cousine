@@ -71,7 +71,7 @@
     aspect-ratio: 1 / 1;
 
     &--first {
-      transform: translateY(-130%);
+      transform: translateY(-130%) rotate(180deg);
       z-index: 1;
     }
 
@@ -122,7 +122,7 @@
       width: 300px;
 
       &--first {
-        transform: translateY(-130%) rotate(80deg);
+        transform: translateY(-130%);
       }
 
       &--second {
